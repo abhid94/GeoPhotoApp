@@ -46,6 +46,14 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView1.contentMode = .scaleAspectFit
             imageView1.image = pickedImage
+            let imageData = UIImagePNGRepresentation(pickedImage)
+            let imageFile = PFFile(name:"pickedImage2.png", data:imageData!)
+            
+            let newPic = PFObject(className:"newPic")
+            newPic["Picture"] = imageFile
+            newPic.saveInBackground()
+            
+            /*
             PFUser.logInWithUsername(inBackground: "Lalitha_6", password: "hello its m3")
             
             let imageData = UIImagePNGRepresentation(pickedImage)
@@ -53,7 +61,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             
             let currUser = PFUser.current()
             currUser?["displayPicture"] = imageFile
-            currUser?.saveInBackground()
+            currUser?.saveInBackground()*/
             /*let userPhoto = PFObject(className:"User")
             userPhoto["imageName"] = "My trip to Hawaii!"
             userPhoto["imageFile"] = imageFile
