@@ -33,6 +33,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getObjectsFromDB()
         
         imagePicker.delegate = self
     }
@@ -56,6 +57,35 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func getObjectsFromDB() {
+        var objectArray = [PFObject]()
+        var imageArray = [PFFile]()
+        let query = PFQuery(className:"GeoPhoto")
+        query.limit = 10
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) GeoPhotos.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        objectArray.append(object)
+                        let file = object["imageFile"] as! PFFile!
+                        
+                        file?.getDataInBackground()
+                        imageArray.append(file!)
+                        
+                   }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!)")
+            }
+        }
     }
 }
 
