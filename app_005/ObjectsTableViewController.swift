@@ -72,7 +72,7 @@ class ObjectsTableViewController: PFQueryTableViewController {
             
             let object = self.object(at: indexPath)
             
-            detailVC.titleString = object?.object(forKey: "objectId") as! String
+            //detailVC.titleString = object?.object(forKey: "objectId") as! String
             detailVC.imageFile = object?.object(forKey: "imageFile") as? PFFile
             
             self.tableView.deselectRow(at: indexPath!, animated: true)
