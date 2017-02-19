@@ -13,6 +13,8 @@ import ParseUI
 
 class ObjectsTableViewController: PFQueryTableViewController {
     
+
+    
     override func queryForTable() -> PFQuery<PFObject> {
         
         let query = PFQuery(className: "GeoPhoto")
