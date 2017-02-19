@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		27E707DD3F8C86BA77D0FD00 /* Pods_app_005.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF591ECC43D5167EA6F457D8 /* Pods_app_005.framework */; };
 		465B5562B1CF3BD0A69408C1 /* Pods_app_005UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99005C3753BF1139416887A8 /* Pods_app_005UITests.framework */; };
+		7C0B2F8B1E56842B002501C4 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B2F8A1E56842B002501C4 /* PreviewViewController.swift */; };
+		7CE69A3F1E55A3D800F2E0C1 /* ObjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE69A3E1E55A3D800F2E0C1 /* ObjectsTableViewController.swift */; };
+		7CE69A411E55AD7500F2E0C1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */; };
 		91EB2AF5FFD90030E6645909 /* Pods_app_005Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F417568E7E9B5E83DD6F70A /* Pods_app_005Tests.framework */; };
 		9D69D02E1E4575F2009257D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D02D1E4575F2009257D3 /* AppDelegate.swift */; };
-		9D69D0301E4575F2009257D3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D02F1E4575F2009257D3 /* FirstViewController.swift */; };
 		9D69D0321E4575F2009257D3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D0311E4575F2009257D3 /* SecondViewController.swift */; };
 		9D69D0351E4575F2009257D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D69D0331E4575F2009257D3 /* Main.storyboard */; };
 		9D69D0371E4575F3009257D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D69D0361E4575F3009257D3 /* Assets.xcassets */; };
 		9D69D03A1E4575F3009257D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D69D0381E4575F3009257D3 /* LaunchScreen.storyboard */; };
 		9D69D0451E4575F3009257D3 /* app_005Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D0441E4575F3009257D3 /* app_005Tests.swift */; };
 		9D69D0501E4575F3009257D3 /* app_005UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D04F1E4575F3009257D3 /* app_005UITests.swift */; };
-		9DABB1C31E4D628100F06DE6 /* GeoPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABB1C21E4D628100F06DE6 /* GeoPhotoTableViewController.swift */; };
 		9DF70DF31E457A6A0052DEF4 /* CustomClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70DF21E457A6A0052DEF4 /* CustomClass.m */; };
 /* End PBXBuildFile section */
 
@@ -46,10 +47,12 @@
 		4EC4A2DAB15711A69CF74BB9 /* Pods-app_005.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_005.release.xcconfig"; path = "Pods/Target Support Files/Pods-app_005/Pods-app_005.release.xcconfig"; sourceTree = "<group>"; };
 		5CC664E9F244E8DE4E5B591D /* Pods-app_005Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_005Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_005Tests/Pods-app_005Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6C62A9DE43C5E037556CF948 /* Pods-app_005.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_005.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_005/Pods-app_005.debug.xcconfig"; sourceTree = "<group>"; };
+		7C0B2F8A1E56842B002501C4 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		7CE69A3E1E55A3D800F2E0C1 /* ObjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsTableViewController.swift; sourceTree = "<group>"; };
+		7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		99005C3753BF1139416887A8 /* Pods_app_005UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_005UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D69D02A1E4575F2009257D3 /* app_005.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app_005.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D69D02D1E4575F2009257D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D69D02F1E4575F2009257D3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		9D69D0311E4575F2009257D3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		9D69D0341E4575F2009257D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D69D0361E4575F3009257D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +64,6 @@
 		9D69D04B1E4575F3009257D3 /* app_005UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = app_005UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D69D04F1E4575F3009257D3 /* app_005UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_005UITests.swift; sourceTree = "<group>"; };
 		9D69D0511E4575F3009257D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DABB1C21E4D628100F06DE6 /* GeoPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPhotoTableViewController.swift; sourceTree = "<group>"; };
 		9DF70DF11E457A690052DEF4 /* app_005-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "app_005-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DF70DF21E457A6A0052DEF4 /* CustomClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomClass.m; sourceTree = "<group>"; };
 		AB1B3377CCC8224858AF5F00 /* Pods-app_005UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_005UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_005UITests/Pods-app_005UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,15 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				9D69D02D1E4575F2009257D3 /* AppDelegate.swift */,
-				9D69D02F1E4575F2009257D3 /* FirstViewController.swift */,
 				9DF70DF21E457A6A0052DEF4 /* CustomClass.m */,
 				9D69D0311E4575F2009257D3 /* SecondViewController.swift */,
 				9D69D0331E4575F2009257D3 /* Main.storyboard */,
+				7CE69A3E1E55A3D800F2E0C1 /* ObjectsTableViewController.swift */,
+				7C0B2F8A1E56842B002501C4 /* PreviewViewController.swift */,
+				7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */,
 				9D69D0361E4575F3009257D3 /* Assets.xcassets */,
 				9D69D0381E4575F3009257D3 /* LaunchScreen.storyboard */,
 				9D69D03B1E4575F3009257D3 /* Info.plist */,
 				9DF70DF11E457A690052DEF4 /* app_005-Bridging-Header.h */,
-				9DABB1C21E4D628100F06DE6 /* GeoPhotoTableViewController.swift */,
 			);
 			path = app_005;
 			sourceTree = "<group>";
@@ -461,11 +464,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE69A3F1E55A3D800F2E0C1 /* ObjectsTableViewController.swift in Sources */,
 				9D69D0321E4575F2009257D3 /* SecondViewController.swift in Sources */,
+				7C0B2F8B1E56842B002501C4 /* PreviewViewController.swift in Sources */,
 				9DF70DF31E457A6A0052DEF4 /* CustomClass.m in Sources */,
-				9DABB1C31E4D628100F06DE6 /* GeoPhotoTableViewController.swift in Sources */,
 				9D69D02E1E4575F2009257D3 /* AppDelegate.swift in Sources */,
-				9D69D0301E4575F2009257D3 /* FirstViewController.swift in Sources */,
+				7CE69A411E55AD7500F2E0C1 /* BaseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
