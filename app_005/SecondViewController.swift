@@ -24,8 +24,8 @@ UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let imageData = UIImagePNGRepresentation(pickedImage)
-            let imageFile = PFFile(name:"imageFile.png", data:imageData!)
+            let imageData = UIImageJPEGRepresentation(pickedImage, 0) // "0" indicates lowest size/quality
+            let imageFile = PFFile(name:"imageFile.jpeg", data:imageData!)
             let GeoPhoto = PFObject(className:"GeoPhoto")
             GeoPhoto["imageFile"] = imageFile
             GeoPhoto.saveInBackground()
