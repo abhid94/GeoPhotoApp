@@ -10,8 +10,8 @@ import UIKit
 import Parse
 
 class SecondViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
-
+UINavigationControllerDelegate, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -24,10 +24,16 @@ UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
             let imageData = UIImageJPEGRepresentation(pickedImage, 0) // "0" indicates lowest size/quality
             let imageFile = PFFile(name:"imageFile.jpeg", data:imageData!)
             let GeoPhoto = PFObject(className:"GeoPhoto")
             GeoPhoto["imageFile"] = imageFile
+            
+            let coordinates =  locationManager.location?.coordinate
+            let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+            GeoPhoto["location"] = location
+            
             GeoPhoto.saveInBackground()
             print("Should be sent to Parse")
         } else {
@@ -37,6 +43,14 @@ UINavigationControllerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
