@@ -13,15 +13,19 @@ import ParseUI
 
 class ObjectsTableViewController: PFQueryTableViewController {
     
-
     
     override func queryForTable() -> PFQuery<PFObject> {
+        let query = PFQuery(className: self.parseClassName!)
         
-        let query = PFQuery(className: "GeoPhoto")
-        query.cachePolicy = .cacheElseNetwork
+        // If no objects are loaded in memory, we look to the cache first to fill the table
+        // and then subsequently do a query against the network.
+        if self.objects!.count == 0 {
+            query.cachePolicy = .cacheThenNetwork
+        }
+        
         query.order(byDescending: "createdAt")
-        return query
         
+        return query
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
