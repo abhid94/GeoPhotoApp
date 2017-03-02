@@ -49,7 +49,37 @@
                             <outlet property="delegate" destination="R6O-ZF-XRd" id="5Eh-o9-rjA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Image Feed" id="VyI-LG-qdx"/>
+                    <navigationItem key="navigationItem" title="Image Feed" id="VyI-LG-qdx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="xpz-XA-qqY">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="9Qo-YI-WzJ">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="2km"/>
+                                    <segment title="20km"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeRadiusMethod:" destination="R6O-ZF-XRd" eventType="valueChanged" id="7h9-1c-uKU"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Cde-Nf-RFD">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ksD-EU-R6V">
+                                <rect key="frame" x="264" y="7" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="new"/>
+                                    <segment title="old"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeSortMethod:" destination="R6O-ZF-XRd" eventType="valueChanged" id="FDe-DV-doC"/>
+                                </connections>
+                            </segmentedControl>
+                            <connections>
+                                <action selector="changeSortMethod:" destination="R6O-ZF-XRd" id="3za-q9-3Gt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="GeoPhoto"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="objectsPerPage">
@@ -57,6 +87,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="changeRadiusControl" destination="9Qo-YI-WzJ" id="pa2-s3-vyP"/>
+                        <outlet property="sortMethodControl" destination="ksD-EU-R6V" id="f9j-Ab-EQb"/>
                         <segue destination="dpx-iE-rA8" kind="show" identifier="showDetail" id="hsB-1n-M6Z"/>
                     </connections>
                 </tableViewController>

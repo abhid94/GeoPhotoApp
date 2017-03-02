@@ -11,7 +11,40 @@ import UIKit
 import Parse
 import ParseUI
 
-class ObjectsTableViewController: PFQueryTableViewController {
+class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
+    
+    var locationManager = CLLocationManager()
+    var sortMethod = -1
+    var radius = 2.0
+    var sortMetric = "createdAt"
+    
+    @IBOutlet weak var changeRadiusControl: UISegmentedControl!
+    @IBOutlet weak var sortMethodControl: UISegmentedControl!
+    
+    @IBAction func changeRadiusMethod(_ sender: Any) {
+        switch changeRadiusControl.selectedSegmentIndex
+        {
+        case 0:
+            radius = 2.0;
+        case 1:
+            radius = 20.0;
+        default:
+            break
+        }
+        self.loadObjects()
+    }
+    @IBAction func changeSortMethod(_ sender: Any) {
+        switch sortMethodControl.selectedSegmentIndex
+        {
+        case 0:
+            sortMethod = 0;
+        case 1:
+            sortMethod = 1;
+        default:
+            break
+        }
+        self.loadObjects()
+    }
     
     
     override func queryForTable() -> PFQuery<PFObject> {
@@ -19,12 +52,28 @@ class ObjectsTableViewController: PFQueryTableViewController {
         
         // If no objects are loaded in memory, we look to the cache first to fill the table
         // and then subsequently do a query against the network.
+        locationManager.startUpdatingLocation()
+        
+        let coordinates =  locationManager.location?.coordinate
+        let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+        query.whereKey("location", nearGeoPoint: location, withinKilometers: radius)
+        
+        switch(sortMethod) {
+            case 0  :
+                query.order(byDescending: sortMetric)
+                break;
+            case 1  :
+                query.order(byAscending: sortMetric)
+                break;
+            default :
+                query.order(byDescending: sortMetric)
+        }
+
         if self.objects!.count == 0 {
             query.cachePolicy = .cacheThenNetwork
         }
         
-        query.order(byDescending: "createdAt")
-        
+        locationManager.stopUpdatingLocation()
         return query
     }
     
@@ -85,6 +134,18 @@ class ObjectsTableViewController: PFQueryTableViewController {
         }
         
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
 }
