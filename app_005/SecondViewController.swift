@@ -30,9 +30,11 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
             let GeoPhoto = PFObject(className:"GeoPhoto")
             GeoPhoto["imageFile"] = imageFile
             
+            locationManager.startUpdatingLocation()
             let coordinates =  locationManager.location?.coordinate
             let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
             GeoPhoto["location"] = location
+            locationManager.stopUpdatingLocation()
             
             GeoPhoto.saveInBackground()
             print("Should be sent to Parse")
@@ -50,7 +52,6 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         }
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
