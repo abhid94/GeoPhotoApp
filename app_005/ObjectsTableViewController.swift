@@ -22,6 +22,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     @IBOutlet weak var sortMethodControl: UISegmentedControl!
     
     @IBAction func changeRadiusMethod(_ sender: Any) {
+        
+        let indexPath = IndexPath(row: 0 , section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
+        
         switch changeRadiusControl.selectedSegmentIndex
         {
         case 0:
@@ -32,8 +36,15 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             break
         }
         self.loadObjects()
+        
+       
     }
     @IBAction func changeSortMethod(_ sender: Any) {
+        
+        
+        let indexPath = IndexPath(row: 0 , section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
+        
         switch sortMethodControl.selectedSegmentIndex
         {
         case 0:
@@ -44,6 +55,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             break
         }
         self.loadObjects()
+     
     }
     
     
