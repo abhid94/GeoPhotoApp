@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iM7-8m-q2C" id="4qc-uv-A6u">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="599.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVd-5M-efz">
@@ -82,9 +82,6 @@
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="GeoPhoto"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="objectsPerPage">
-                            <integer key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="changeRadiusControl" destination="9Qo-YI-WzJ" id="pa2-s3-vyP"/>

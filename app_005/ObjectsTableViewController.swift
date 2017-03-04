@@ -95,17 +95,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row + 1 > (self.objects?.count)! {
-            return 44
-        }
-        
-        let height = super.tableView(tableView, heightForRowAt: indexPath)
-        
-        return height
-        
-    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -136,8 +126,34 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
     }
     
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row + 1 > (self.objects?.count)! {
+            return 0    //to get rid of the load more cell 
+        }
+        
+        let height = super.tableView(tableView, heightForRowAt: indexPath)
+        
+        return height
+        
+    }
+    
+    //Infinite scrolling
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentSize.height - scrollView.contentOffset.y < (self.view.bounds.size.height)) {
+            if !self.isLoading {
+                self.loadNextPage()
+            }
+        }
+    }
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.paginationEnabled = true
+        self.objectsPerPage = 10
         
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .notDetermined {
