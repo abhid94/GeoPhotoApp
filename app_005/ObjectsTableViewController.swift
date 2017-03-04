@@ -76,6 +76,16 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.stopUpdatingLocation()
         return query
     }
+    @IBAction func addUpvote(_ sender: Any) {
+        
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let hitIndex = self.tableView.indexPathForRow(at: hitPoint)
+        let object1 = object(at: hitIndex)
+        object1?.incrementKey("upVotes")
+        object1?.saveInBackground()
+        self.tableView.reloadData()
+        print("Top Index Path \(hitIndex?.row)")
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
     
@@ -85,10 +95,12 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         cell.titleLabel.text = object?.object(forKey: "objectId") as? String
         
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
+        let upvoteCount = object?.object(forKey: "upVotes")
         
         //cell.cellImageView.image = UIImage(named: "placeholder")      Will need to add a placeholder image to show before images have finished loading from DB
         
         cell.cellImageView.file = imageFile
+        cell.upvoteCounter.setTitle("\(upvoteCount!)",for: .normal)
         cell.cellImageView.loadInBackground()
         
         return cell
