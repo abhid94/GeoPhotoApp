@@ -34,6 +34,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
             let coordinates =  locationManager.location?.coordinate
             let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
             GeoPhoto["location"] = location
+            GeoPhoto["upVotes"] = 0
             locationManager.stopUpdatingLocation()
             
             GeoPhoto.saveInBackground()
