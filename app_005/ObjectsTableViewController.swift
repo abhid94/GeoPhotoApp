@@ -78,19 +78,20 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.stopUpdatingLocation()
         return query
     }
-    @IBAction func addUpvote(_ sender: Any) {
+    @IBAction func addUpvote(_ sender: AnyObject) {
         
-        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
-        let hitIndex = self.tableView.indexPathForRow(at: hitPoint)
+        let hitPoint:CGPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
+        let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         let geoPhoto = object(at: hitIndex)
         geoPhoto?.incrementKey("upVotes")
-        geoPhoto?.saveInBackground()
         self.tableView.reloadData()
     }
     
     @IBAction func addDownvote(_ sender: Any) {
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
-        let hitIndex = self.tableView.indexPathForRow(at: hitPoint)
+        let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
+        let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         let geoPhoto = object(at: hitIndex)
         geoPhoto?.incrementKey("upVotes", byAmount: -1)
         geoPhoto?.saveInBackground()
