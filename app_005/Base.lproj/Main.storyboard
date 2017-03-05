@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVd-5M-efz">
-                                            <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                            <rect key="frame" x="194" y="9" width="166" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -39,16 +39,28 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-nZ-5t0">
                                             <rect key="frame" x="16" y="4" width="53" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="up">
-                                                <color key="titleColor" red="0.37949793681115224" green="0.6624365482233503" blue="0.38829722243705816" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="x">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-n3-LTS">
                                             <rect key="frame" x="77" y="3" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="vote"/>
+                                            <state key="normal" title="up">
+                                                <color key="titleColor" red="0.27129289519999999" green="0.86042592009999996" blue="0.46149348849999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
                                             <connections>
                                                 <action selector="addUpvote:" destination="R6O-ZF-XRd" eventType="touchUpInside" id="zFF-7R-ZMI"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPz-hm-Niv">
+                                            <rect key="frame" x="140" y="3" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="down">
+                                                <color key="titleColor" red="0.81474064089999998" green="0.22910442880000001" blue="0.11816876799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addDownvote:" destination="R6O-ZF-XRd" eventType="touchUpInside" id="aTx-LU-mrw"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -85,7 +97,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="new"/>
-                                    <segment title="old"/>
+                                    <segment title="hot"/>
                                 </segments>
                                 <connections>
                                     <action selector="changeSortMethod:" destination="R6O-ZF-XRd" eventType="valueChanged" id="FDe-DV-doC"/>

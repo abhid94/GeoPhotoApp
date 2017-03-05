@@ -38,8 +38,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         {
         case 0:
             sortMethod = 0;
+            sortMetric = "createdAt"
         case 1:
-            sortMethod = 1;
+            sortMethod = 0;
+            sortMetric = "upVotes"
         default:
             break
         }
@@ -80,13 +82,21 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let hitIndex = self.tableView.indexPathForRow(at: hitPoint)
-        let object1 = object(at: hitIndex)
-        object1?.incrementKey("upVotes")
-        object1?.saveInBackground()
+        let geoPhoto = object(at: hitIndex)
+        geoPhoto?.incrementKey("upVotes")
+        geoPhoto?.saveInBackground()
         self.tableView.reloadData()
-        print("Top Index Path \(hitIndex?.row)")
     }
     
+    @IBAction func addDownvote(_ sender: Any) {
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let hitIndex = self.tableView.indexPathForRow(at: hitPoint)
+        let geoPhoto = object(at: hitIndex)
+        geoPhoto?.incrementKey("upVotes", byAmount: -1)
+        geoPhoto?.saveInBackground()
+        self.tableView.reloadData()
+        
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
     
         
