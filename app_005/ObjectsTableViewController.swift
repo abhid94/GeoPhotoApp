@@ -78,15 +78,26 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.stopUpdatingLocation()
         return query
     }
+    
     @IBAction func addUpvote(_ sender: AnyObject) {
         
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         let geoPhoto = object(at: hitIndex)
-        geoPhoto?.incrementKey("upVotes")
-        geoPhoto?.saveInBackground()
-        self.tableView.reloadData()
+        
+        let usersHaveUpvotedArray = geoPhoto?["upVoters"] as? NSArray
+        let userObjectId = PFUser.current()?.objectId as String! ?? "9999999999"
+        let contained = usersHaveUpvotedArray?.contains(userObjectId)
+        
+        if (contained == true) {
+        }
+        if (contained == false) {
+            geoPhoto?.addUniqueObject(userObjectId, forKey: "upVoters")
+            geoPhoto?.incrementKey("upVotes")
+            geoPhoto?.saveInBackground()
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func addDownvote(_ sender: Any) {
@@ -94,11 +105,25 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         let geoPhoto = object(at: hitIndex)
-        geoPhoto?.incrementKey("upVotes", byAmount: -1)
-        geoPhoto?.saveInBackground()
-        self.tableView.reloadData()
         
+        let usersHaveUpvotedArray = geoPhoto?["upVoters"] as? NSArray
+        let userObjectId = PFUser.current()?.objectId as String! ?? "9999999999"
+        let contained = usersHaveUpvotedArray?.contains(userObjectId)
+        if (contained == true) {
+        }
+        
+        if (contained == false) {
+            geoPhoto?.addUniqueObject(userObjectId, forKey: "upVoters")
+            geoPhoto?.incrementKey("upVotes", byAmount: -1)
+            if(geoPhoto?.object(forKey: "upVotes") as! Int == -5){
+                geoPhoto?.deleteEventually()
+            }
+
+            geoPhoto?.saveInBackground()
+            self.tableView.reloadData()
+        }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
     
         

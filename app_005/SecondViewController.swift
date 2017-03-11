@@ -11,7 +11,11 @@ import Parse
 
 class SecondViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, CLLocationManagerDelegate {
+    
+    
+    
     var locationManager = CLLocationManager()
+    
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -35,6 +39,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
             let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
             GeoPhoto["location"] = location
             GeoPhoto["upVotes"] = 0
+            GeoPhoto["upVoters"] = []
             locationManager.stopUpdatingLocation()
             
             GeoPhoto.saveInBackground()
