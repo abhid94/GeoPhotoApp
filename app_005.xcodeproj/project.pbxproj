@@ -20,6 +20,8 @@
 		9D69D03A1E4575F3009257D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D69D0381E4575F3009257D3 /* LaunchScreen.storyboard */; };
 		9D69D0451E4575F3009257D3 /* app_005Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D0441E4575F3009257D3 /* app_005Tests.swift */; };
 		9D69D0501E4575F3009257D3 /* app_005UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D04F1E4575F3009257D3 /* app_005UITests.swift */; };
+		9D6F469E1E73A06C00C2B1A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6F469D1E73A06C00C2B1A8 /* TabBarController.swift */; };
+		9DA3EAAE1E737E1500D016C0 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3EAAD1E737E1500D016C0 /* StartViewController.swift */; };
 		9DF70DF31E457A6A0052DEF4 /* CustomClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70DF21E457A6A0052DEF4 /* CustomClass.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		9D69D04B1E4575F3009257D3 /* app_005UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = app_005UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D69D04F1E4575F3009257D3 /* app_005UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_005UITests.swift; sourceTree = "<group>"; };
 		9D69D0511E4575F3009257D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D6F469D1E73A06C00C2B1A8 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		9DA3EAAD1E737E1500D016C0 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		9DF70DF11E457A690052DEF4 /* app_005-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "app_005-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DF70DF21E457A6A0052DEF4 /* CustomClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomClass.m; sourceTree = "<group>"; };
 		AB1B3377CCC8224858AF5F00 /* Pods-app_005UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_005UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_005UITests/Pods-app_005UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,11 +152,13 @@
 			children = (
 				9D69D02D1E4575F2009257D3 /* AppDelegate.swift */,
 				9DF70DF21E457A6A0052DEF4 /* CustomClass.m */,
-				9D69D0311E4575F2009257D3 /* SecondViewController.swift */,
+				9DA3EAAD1E737E1500D016C0 /* StartViewController.swift */,
 				9D69D0331E4575F2009257D3 /* Main.storyboard */,
+				9D69D0311E4575F2009257D3 /* SecondViewController.swift */,
 				7CE69A3E1E55A3D800F2E0C1 /* ObjectsTableViewController.swift */,
 				7C0B2F8A1E56842B002501C4 /* PreviewViewController.swift */,
 				7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */,
+				9D6F469D1E73A06C00C2B1A8 /* TabBarController.swift */,
 				9D69D0361E4575F3009257D3 /* Assets.xcassets */,
 				9D69D0381E4575F3009257D3 /* LaunchScreen.storyboard */,
 				9D69D03B1E4575F3009257D3 /* Info.plist */,
@@ -465,6 +471,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE69A3F1E55A3D800F2E0C1 /* ObjectsTableViewController.swift in Sources */,
+				9D6F469E1E73A06C00C2B1A8 /* TabBarController.swift in Sources */,
+				9DA3EAAE1E737E1500D016C0 /* StartViewController.swift in Sources */,
 				9D69D0321E4575F2009257D3 /* SecondViewController.swift in Sources */,
 				7C0B2F8B1E56842B002501C4 /* PreviewViewController.swift in Sources */,
 				9DF70DF31E457A6A0052DEF4 /* CustomClass.m in Sources */,
