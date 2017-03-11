@@ -146,9 +146,23 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
         let upvoteCount = object?.object(forKey: "upVotes")
         
-        cell.cellImageView.image = UIImage(named: "placeholder")
+        //cell.cellImageView.image = UIImage(named: "placeholder")
         
-        cell.cellImageView.file = imageFile
+        UIView.transition(with: cell.cellImageView,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                          cell.cellImageView.image = UIImage(named: "placeholder")
+        },
+                          completion: nil)
+        
+        UIView.transition(with: cell.cellImageView,
+                          duration: 1.0,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                          cell.cellImageView.file = imageFile
+        },
+                          completion: nil)
         cell.upvoteCounter.setTitle("\(upvoteCount!)",for: .normal)
         cell.cellImageView.loadInBackground()
         
@@ -214,7 +228,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         super.viewDidLoad()
         
         self.paginationEnabled = true
-        self.objectsPerPage = 10
+        self.objectsPerPage = 30
         
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .notDetermined {
