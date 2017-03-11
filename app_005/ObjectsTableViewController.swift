@@ -146,7 +146,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
         let upvoteCount = object?.object(forKey: "upVotes")
         
-        //cell.cellImageView.image = UIImage(named: "placeholder")      Will need to add a placeholder image to show before images have finished loading from DB
+        cell.cellImageView.image = UIImage(named: "placeholder")
         
         cell.cellImageView.file = imageFile
         cell.upvoteCounter.setTitle("\(upvoteCount!)",for: .normal)
