@@ -78,7 +78,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (PFUser.current() != nil){
-            print("User signed up and logged in through Facebook!")
+            print("User signed up and logged in")
             self.goToTabs()
         } else {
             
