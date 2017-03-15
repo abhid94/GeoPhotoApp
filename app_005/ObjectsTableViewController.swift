@@ -141,7 +141,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BaseTableViewCell
         
-        cell.titleLabel.text = object?.object(forKey: "objectId") as? String
+        //cell.titleLabel.text = object?.object(forKey: "objectId") as? String
         
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
         let upvoteCount = object?.object(forKey: "upVotes")
@@ -201,16 +201,15 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
     }
     
-    
+    /*
+     Function modifies the height of the cell
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row + 1 > (self.objects?.count)! {
-            return 0    //to get rid of the load more cell 
-        }
+        let height = tableView.frame.size.height
+        let percentage = 0.85
         
-        let height = super.tableView(tableView, heightForRowAt: indexPath)
-        
-        return height
+        return CGFloat(height) * CGFloat(percentage);
         
     }
     
