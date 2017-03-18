@@ -31,7 +31,7 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
         
         
         locationManager.delegate = self
-        if CLLocationManager.authorizationStatus() == .notDetermined {
+        if (CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied) {
             self.locationManager.requestWhenInUseAuthorization()
             while(CLLocationManager.authorizationStatus() == .notDetermined){
             }
@@ -44,11 +44,8 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
     
     func goToMainScreen(){
         
-        
-    
         DispatchQueue.main.async(){
             self.performSegue(withIdentifier: "segueToMainScreen", sender: self)
-            self.authori
         }
         print("TEST")
         
