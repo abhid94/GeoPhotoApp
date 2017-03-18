@@ -6,9 +6,10 @@ target 'app_005' do
   use_frameworks!
 
   # Pods for app_005
-  pod 'IGListKit', '~> 2.0.0'
+  #pod 'IGListKit', '~> 2.0.0'
   pod 'Parse'
   pod 'ParseUI'
+  pod 'NVActivityIndicatorView'
 
   target 'app_005Tests' do
     inherit! :search_paths

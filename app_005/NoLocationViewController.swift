@@ -1,30 +1,28 @@
 //
-//  LoadingScreenViewController.swift
+//  NoLocationViewController.swift
 //  app_005
 //
-//  Created by Nirvan Gelda on 18/3/17.
+//  Created by Lalitha Katupitiya on 18/3/17.
 //  Copyright © 2017 Outplay FC. All rights reserved.
 //
 
 import UIKit
-import Parse
 import NVActivityIndicatorView
 
-class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorViewable{
-    
-    var locationManager = CLLocationManager()
-    
+class NoLocationViewController: UIViewController {
+
     override func viewDidLoad() {
-        
+        sleep(1)
         super.viewDidLoad()
-        self.loadingAnimation()
-        self.checkLocation()
+
         // Do any additional setup after loading the view.
     }
-    
-    /*
-     Loading animation while waiting
-     */
+    @IBAction func continueToFeed(_ sender: Any) {
+        self.loadingAnimation()
+        DispatchQueue.main.async(){
+            self.performSegue(withIdentifier: "segueToFeed", sender: self)
+        }
+    }
     func loadingAnimation(){
         let cellWidth = CGFloat(75)
         let cellHeight = CGFloat(75)
@@ -41,45 +39,17 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate, 
         self.view.bringSubview(toFront: activityIndicatorView)
         activityIndicatorView.startAnimating()
     }
-    
-    /*
-     Check if geo-location is enabled. If not prompt user to do so.
-     */
-    func checkLocation() {
-        locationManager.delegate = self
-        if(CLLocationManager.authorizationStatus() == .denied){
-            self.goToNoLocationScreen()
-        }
-        if (CLLocationManager.authorizationStatus() == .notDetermined) {
-            self.locationManager.requestWhenInUseAuthorization()
-            while(CLLocationManager.authorizationStatus() == .notDetermined){
-            }
-            self.goToMainScreen()
-        } else {
-            self.goToMainScreen()
-        }
-        
+
+    @IBAction func openSettings(_ sender: Any) {
+        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, completionHandler: { (success) in
+            print("Settings opened: \(success)") // Prints true
+        })
     }
-    
-    func goToNoLocationScreen(){
-        DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueToNoLocation", sender: self)
-        }
-    }
-    
-    func goToMainScreen(){
-        
-        DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueToMainScreen", sender: self)
-        }
-        print("TEST")
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation

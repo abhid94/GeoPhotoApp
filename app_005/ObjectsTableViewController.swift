@@ -69,7 +69,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.startUpdatingLocation()
         
         let coordinates =  locationManager.location?.coordinate
-        var location = PFGeoPoint(latitude: 61.23133898, longitude: -33.91758748639931)
+        var location = PFGeoPoint(latitude: -33.91758748639931, longitude: 151.12030727128)
         if(coordinates?.latitude != nil){
             location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
         }
@@ -228,16 +228,16 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
    
     override func viewDidLoad() {
         
-        sleep(2)
+        sleep(1)
         super.viewDidLoad()
         
         self.paginationEnabled = true
         self.objectsPerPage = 30
         
         locationManager.delegate = self
-        if CLLocationManager.authorizationStatus() == .notDetermined {
+        /*if CLLocationManager.authorizationStatus() == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
-        }
+        }*/
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Do any additional setup after loading the view, typically from a nib.
