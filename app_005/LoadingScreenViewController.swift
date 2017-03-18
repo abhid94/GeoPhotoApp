@@ -18,7 +18,8 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
         
         super.viewDidLoad()
         self.checkLocation()
-        self.goToMainScreen()
+        //self.goToMainScreen()
+        print(1);
         
         // Do any additional setup after loading the view.
     }
@@ -31,13 +32,21 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
+            self.goToMainScreen()
+        } else {
+            self.goToMainScreen()
         }
         
     }
     
     func goToMainScreen(){
         
-        self.performSegue(withIdentifier: "segueToMainScreen", sender: self)
+        
+    
+        DispatchQueue.main.async(){
+            self.performSegue(withIdentifier: "segueToMainScreen", sender: self)
+        }
+        print("TEST")
         
     }
     

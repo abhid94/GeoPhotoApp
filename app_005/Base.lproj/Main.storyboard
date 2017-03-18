@@ -219,7 +219,7 @@
                     <connections>
                         <outlet property="backgroundImage" destination="Rws-fn-uiH" id="Hio-Lb-Pyv"/>
                         <outlet property="goToTabsButton" destination="dxF-MU-ChM" id="LG7-MD-aZT"/>
-                        <segue destination="4FR-At-zNp" kind="replace" identifier="segueToLoadingScreen" splitViewControllerTargetIndex="1" id="tX9-PT-T4z"/>
+                        <segue destination="4FR-At-zNp" kind="show" identifier="segueToLoadingScreen" id="tX9-PT-T4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQb-03-AuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,7 +246,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="replace" identifier="segueToMainScreen" splitViewControllerTargetIndex="1" id="GYC-JC-4op"/>
+                        <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueToMainScreen" id="dtH-pB-Sv0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCb-nk-3yG" userLabel="First Responder" sceneMemberID="firstResponder"/>
