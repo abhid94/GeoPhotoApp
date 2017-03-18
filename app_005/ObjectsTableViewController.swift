@@ -69,7 +69,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.startUpdatingLocation()
         
         let coordinates =  locationManager.location?.coordinate
-        let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+        var location = PFGeoPoint(latitude: 61.23133898, longitude: -33.91758748639931)
+        if(coordinates?.latitude != nil){
+            location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+        }
         query.whereKey("location", nearGeoPoint: location, withinKilometers: radius)
         
         switch(sortMethod) {
@@ -224,6 +227,8 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
    
     override func viewDidLoad() {
+        
+        sleep(2)
         super.viewDidLoad()
         
         self.paginationEnabled = true

@@ -17,6 +17,7 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.checkLocation()
         //self.goToMainScreen()
         print(1);
@@ -28,10 +29,8 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate {
      Check if geo-location is enabled. If not prompt user to do so.
      */
     func checkLocation() {
-        
-        
         locationManager.delegate = self
-        if (CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied) {
+        if (CLLocationManager.authorizationStatus() == .notDetermined) {
             self.locationManager.requestWhenInUseAuthorization()
             while(CLLocationManager.authorizationStatus() == .notDetermined){
             }
