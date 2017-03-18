@@ -69,7 +69,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         locationManager.startUpdatingLocation()
         
         let coordinates =  locationManager.location?.coordinate
-        let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+        var location = PFGeoPoint(latitude: -33.91758748639931, longitude: 151.12030727128)
+        if(coordinates?.latitude != nil){
+            location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
+        }
         query.whereKey("location", nearGeoPoint: location, withinKilometers: radius)
         
         switch(sortMethod) {
@@ -141,7 +144,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BaseTableViewCell
         
-        cell.titleLabel.text = object?.object(forKey: "objectId") as? String
+        //cell.titleLabel.text = object?.object(forKey: "objectId") as? String
         
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
         let upvoteCount = object?.object(forKey: "upVotes")
@@ -149,10 +152,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         //cell.cellImageView.image = UIImage(named: "placeholder")
         
         UIView.transition(with: cell.cellImageView,
-                          duration: 0.5,
+                          duration: 0.25,
                           options: .transitionCrossDissolve,
                           animations: {
-                          cell.cellImageView.image = UIImage(named: "placeholder")
+                          //cell.cellImageView.image = UIImage(named: "placeholder")
         },
                           completion: nil)
         
@@ -201,16 +204,15 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
     }
     
-    
+    /*
+     Function modifies the height of the cell
+     */
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row + 1 > (self.objects?.count)! {
-            return 0    //to get rid of the load more cell 
-        }
+        let height = tableView.frame.size.height
+        let percentage = 0.85
         
-        let height = super.tableView(tableView, heightForRowAt: indexPath)
-        
-        return height
+        return CGFloat(height) * CGFloat(percentage);
         
     }
     
@@ -225,15 +227,17 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
    
     override func viewDidLoad() {
+        
+        sleep(1)
         super.viewDidLoad()
         
         self.paginationEnabled = true
         self.objectsPerPage = 30
         
         locationManager.delegate = self
-        if CLLocationManager.authorizationStatus() == .notDetermined {
+        /*if CLLocationManager.authorizationStatus() == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
-        }
+        }*/
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Do any additional setup after loading the view, typically from a nib.
