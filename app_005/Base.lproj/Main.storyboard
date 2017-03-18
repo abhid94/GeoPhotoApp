@@ -50,13 +50,12 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-nZ-5t0">
-                                            <rect key="frame" x="368" y="119" width="22" height="22"/>
+                                            <rect key="frame" x="347" y="120" width="63" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
+                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="26"/>
                                             <size key="titleShadowOffset" width="10" height="11"/>
-                                            <state key="normal" title="X">
+                                            <state key="normal" title="XXX">
                                                 <color key="titleColor" red="0.96689711860000005" green="1" blue="0.97219461900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -115,7 +114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDF-ll-YSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623.1884057971015" y="887.36413043478262"/>
+            <point key="canvasLocation" x="709" y="887"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="34c-9j-tGb">
@@ -220,12 +219,39 @@
                     <connections>
                         <outlet property="backgroundImage" destination="Rws-fn-uiH" id="Hio-Lb-Pyv"/>
                         <outlet property="goToTabsButton" destination="dxF-MU-ChM" id="LG7-MD-aZT"/>
-                        <segue destination="8rJ-Kc-sve" kind="show" identifier="segueToMainScreen" id="XeS-bl-L5I"/>
+                        <segue destination="4FR-At-zNp" kind="replace" identifier="segueToLoadingScreen" splitViewControllerTargetIndex="1" id="tX9-PT-T4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQb-03-AuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-971.01449275362324" y="0.0"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="aFM-Pc-agZ">
+            <objects>
+                <viewController id="4FR-At-zNp" userLabel="Loading View Controller" customClass="LoadingScreenViewController" customModule="app_005" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MBz-yA-ulK"/>
+                        <viewControllerLayoutGuide type="bottom" id="AI3-gm-8Ap"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="huP-zw-pg1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoadingScreens" translatesAutoresizingMaskIntoConstraints="NO" id="bKD-k6-geu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="replace" identifier="segueToMainScreen" splitViewControllerTargetIndex="1" id="GYC-JC-4op"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCb-nk-3yG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.927536231884062" y="0.0"/>
         </scene>
         <!--Item-->
         <scene sceneID="xHJ-4L-OZT">
@@ -234,7 +260,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Item" id="xuQ-qT-t1I"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yQs-YK-1OV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yQs-YK-1OV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </navigationBar>
@@ -253,6 +279,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LoadingScreens" width="375" height="667"/>
         <image name="camera" width="62" height="62"/>
         <image name="down" width="46" height="31"/>
         <image name="second" width="30" height="30"/>

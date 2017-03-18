@@ -70,7 +70,7 @@ class StartViewController: UIViewController {
     func goToTabs(){
         print("about to segue")
         DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueToMainScreen", sender: self)
+            self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
             
         }
     }

@@ -149,10 +149,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         //cell.cellImageView.image = UIImage(named: "placeholder")
         
         UIView.transition(with: cell.cellImageView,
-                          duration: 0.5,
+                          duration: 0.25,
                           options: .transitionCrossDissolve,
                           animations: {
-                          cell.cellImageView.image = UIImage(named: "placeholder")
+                          //cell.cellImageView.image = UIImage(named: "placeholder")
         },
                           completion: nil)
         
