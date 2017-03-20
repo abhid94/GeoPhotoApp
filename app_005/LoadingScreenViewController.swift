@@ -28,7 +28,7 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate, 
     func loadingAnimation(){
         let cellWidth = CGFloat(75)
         let cellHeight = CGFloat(75)
-        let val = NVActivityIndicatorType.ballClipRotate.rawValue
+        let val = NVActivityIndicatorType.ballScaleRippleMultiple.rawValue
         let x = (self.view.frame.size.width) - 75
         let y = (self.view.frame.size.height) - 75
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)

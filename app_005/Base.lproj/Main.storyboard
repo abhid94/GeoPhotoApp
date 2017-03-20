@@ -25,7 +25,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="576"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhv-Hz-2xC" customClass="PFImageView">
+                                        <imageView userInteractionEnabled="NO" tag="69" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhv-Hz-2xC" customClass="PFImageView">
                                             <rect key="frame" x="0.0" y="0.0" width="415" height="570"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -143,6 +143,65 @@
             </objects>
             <point key="canvasLocation" x="1500" y="886.79577464788736"/>
         </scene>
+        <!--Caption View Controller-->
+        <scene sceneID="NTT-e1-NxW">
+            <objects>
+                <viewController id="4gF-B7-isP" customClass="CaptionViewController" customModule="app_005" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Kr-os-Ymy"/>
+                        <viewControllerLayoutGuide type="bottom" id="etk-a0-wsO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TcJ-5d-YyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-Bw-JFZ">
+                                <rect key="frame" x="154" y="25" width="107" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbs-Uu-Hvu">
+                                <rect key="frame" x="20" y="20" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="approve"/>
+                                <connections>
+                                    <action selector="approvePhoto:" destination="4gF-B7-isP" eventType="touchUpInside" id="hvp-95-YTR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-1e-dRO">
+                                <rect key="frame" x="348" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="cancel"/>
+                                <connections>
+                                    <action selector="cancelCaption:" destination="4gF-B7-isP" eventType="touchUpInside" id="3Mh-xX-fzx"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Qt-0W-o89">
+                                <rect key="frame" x="-1" y="166" width="415" height="570"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-UC-dfE">
+                                <rect key="frame" x="92" y="90" width="229" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionText" destination="9JF-UC-dfE" id="vAN-cI-nAw"/>
+                        <outlet property="reviewImage" destination="0Qt-0W-o89" id="Ba5-c7-OZ7"/>
+                        <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueAfterCaption" id="Hf1-Oc-2Wb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0a-Bf-dAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2036.2318840579712" y="1612.5000000000002"/>
+        </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -174,6 +233,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <segue destination="4gF-B7-isP" kind="presentation" identifier="segueToCaption" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="zIo-Fw-tpf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,6 +396,6 @@
         <image name="w-3829" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IcZ-jm-Plm"/>
+        <segue reference="Hf1-Oc-2Wb"/>
     </inferredMetricsTieBreakers>
 </document>
