@@ -13,12 +13,21 @@ class CaptionViewController: UIViewController {
 
     var coordinates : CLLocationCoordinate2D!
     var info : [String : Any]!
+    var pickedImage : UIImage!
     
     @IBOutlet var captionText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.reviewImage.image = pickedImage
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CaptionViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
@@ -33,17 +42,18 @@ class CaptionViewController: UIViewController {
             self.performSegue(withIdentifier: "segueAfterCaption", sender: self)
         }
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 
     @IBAction func approvePhoto(_ sender: Any) {
         
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if  (pickedImage != nil) {
             
             let imageData = UIImageJPEGRepresentation(pickedImage, 0) // "0" indicates lowest size/quality
             let imageFile = PFFile(name:"imageFile.jpeg", data:imageData!)
-            
-            let imageView = UIImage(data: imageData!)
-            self.reviewImage = UIImageView(image: imageView)
-            
             
             let GeoPhoto = PFObject(className:"GeoPhoto")
             GeoPhoto["imageFile"] = imageFile
