@@ -58,10 +58,18 @@
                                                 <color key="titleColor" red="0.96689711860000005" green="1" blue="0.97219461900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTk-R6-1mo">
+                                            <rect key="frame" x="0.0" y="422" width="414" height="65"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="captionLabel" destination="oTk-R6-1mo" id="5dP-8y-2mn"/>
                                     <outlet property="cellImageView" destination="uhv-Hz-2xC" id="5yx-uE-V9E"/>
                                     <outlet property="upvoteCounter" destination="e6i-nZ-5t0" id="rJX-dq-yqr"/>
                                 </connections>
@@ -114,7 +122,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDF-ll-YSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="887"/>
+            <point key="canvasLocation" x="708.69565217391312" y="886.54891304347836"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="34c-9j-tGb">
