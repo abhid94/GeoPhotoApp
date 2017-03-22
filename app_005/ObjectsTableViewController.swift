@@ -169,7 +169,9 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         cell.upvoteCounter.setTitle("\(upvoteCount!)",for: .normal)
         cell.cellImageView.loadInBackground()
         var newString = object?.object(forKey: "caption") as? String
-        newString = newString!.uppercased()
+        if(newString != nil) {
+            newString = newString!.uppercased()
+        }
         cell.captionLabel.text = newString
         //cell.captionLabel.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height*0.6)
         
