@@ -15,6 +15,7 @@ class BaseTableViewCell: PFTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cellImageView: PFImageView!    
     @IBOutlet weak var upvoteCounter: UIButton!
+    @IBOutlet weak var captionLabel: UILabel!
     
 
 }

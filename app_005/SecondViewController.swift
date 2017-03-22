@@ -9,12 +9,15 @@
 import UIKit
 import Parse
 
+
 class SecondViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     
-    
+
     var locationManager = CLLocationManager()
+    var coordinatesInfo = CLLocationCoordinate2D()
+    var picInfo = [String : Any]()
     
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -27,31 +30,21 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            let imageData = UIImageJPEGRepresentation(pickedImage, 0) // "0" indicates lowest size/quality
-            let imageFile = PFFile(name:"imageFile.jpeg", data:imageData!)
-            let GeoPhoto = PFObject(className:"GeoPhoto")
-            GeoPhoto["imageFile"] = imageFile
-            
-            locationManager.startUpdatingLocation()
-            let coordinates =  locationManager.location?.coordinate
-            let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
-            GeoPhoto["location"] = location
-            GeoPhoto["upVotes"] = 0
-            GeoPhoto["upVoters"] = []
-            locationManager.stopUpdatingLocation()
-            
-            GeoPhoto.saveInBackground()
-            print("Should be sent to Parse")
-        } else {
-            print("Something, went wrong")
+        
+        self.picInfo = info
+        locationManager.startUpdatingLocation()
+        self.coordinatesInfo =  (locationManager.location?.coordinate)!
+        locationManager.stopUpdatingLocation()
+        
+        print("going to caption")
+        DispatchQueue.main.async(){
+            self.performSegue(withIdentifier: "segueToCaption", sender: self)
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
@@ -64,6 +57,17 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "segueToCaption" {
+            
+            if let toViewController = segue.destination as? CaptionViewController {
+                toViewController.info = self.picInfo
+                toViewController.coordinates = self.coordinatesInfo
+            }
+        }
     }
 
 }
