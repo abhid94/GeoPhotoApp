@@ -62,6 +62,7 @@ class CaptionViewController: UIViewController {
             GeoPhoto["location"] = location
             GeoPhoto["upVotes"] = 0
             GeoPhoto["upVoters"] = []
+            GeoPhoto["comments"] = []
             GeoPhoto["caption"] = captionText.text ?? ""
             print("CAPTION ",captionText.text!)
             GeoPhoto.saveInBackground()

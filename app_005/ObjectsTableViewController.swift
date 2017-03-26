@@ -197,12 +197,16 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let detailVC = segue.destination as! PreviewViewController
+            let detailVC = segue.destination as! CommentsTableViewController
             
             let object = self.object(at: indexPath)
             
-            detailVC.titleString = object?.object(forKey: "objectId") as? String
+            detailVC.titleString = object?.objectId
+            print("one")
+            print(object?.objectId!)
+            print("two")
             detailVC.imageFile = object?.object(forKey: "imageFile") as? PFFile
+            detailVC.commentsArray = (object?.object(forKey: "comments") as? [String])!
             
             self.tableView.deselectRow(at: indexPath!, animated: true)
         }
