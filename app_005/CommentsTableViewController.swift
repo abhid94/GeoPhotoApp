@@ -63,12 +63,12 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
         print("comment made!")
     }
         // MARK: - Table view data source
-    func loadingAnimation(){
+    /*func loadingAnimation(){
         let cellWidth = CGFloat(75)
         let cellHeight = CGFloat(75)
         let val = NVActivityIndicatorType.ballScaleRippleMultiple.rawValue
         let x = (self.view.frame.size.width) - 75
-        let y = (self.view.frame.size.height) - 75
+        let y = (self.view.frame.size.height) - 95
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
         let activityIndicatorView = NVActivityIndicatorView(frame: frame,                                                          type: NVActivityIndicatorType(rawValue: val)!, color: UIColor.black)
         activityIndicatorView.padding = 20
@@ -78,7 +78,7 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
         self.view.addSubview(activityIndicatorView)
         self.view.bringSubview(toFront: activityIndicatorView)
         activityIndicatorView.startAnimating()
-    }
+    }*/
     
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
@@ -103,6 +103,7 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
             //self.navigationController..
             self.title = self.titleString
             print(self.commentsArray.count)
+            self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
             //print(self.commentsArray[0])
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CaptionViewController.dismissKeyboard))
             
@@ -121,8 +122,8 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
              }
              
              }*/
-            let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeLeft))
-            recognizer.direction = .left
+            let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeRight))
+            recognizer.direction = .right
             self.view .addGestureRecognizer(recognizer)
             self.commentTextField.placeholder = "Comment.."
             self.commentTextField.borderStyle = UITextBorderStyle.roundedRect
@@ -182,10 +183,11 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
         print("send button pressed")
         //print(textField?.text)
     }
-        func swipeLeft(recognizer : UISwipeGestureRecognizer) {
+        func swipeRight(recognizer : UISwipeGestureRecognizer) {
             //DispatchQueue.main.async(){
-            self.loadingAnimation()
-                self.performSegue(withIdentifier: "segueBackFromComments", sender: self)
+            //self.loadingAnimation()
+            self.performSegue(withIdentifier: "unwindToFeed", sender: self)
+            //    self.performSegue(withIdentifier: "segueBackFromComments", sender: self)
             //}
         }
         /*

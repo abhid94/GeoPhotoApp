@@ -74,6 +74,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="CommentsButton"/>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAX-Li-kEI">
+                                            <rect key="frame" x="310" y="383" width="101" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="goToComments:" destination="R6O-ZF-XRd" eventType="touchUpInside" id="iFF-1I-QXK"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
@@ -158,7 +168,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wD1-AH-Vau" id="4hW-rL-Hr7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvR-8G-i8P">
@@ -187,9 +197,11 @@
                     <connections>
                         <outlet property="commentTextField" destination="qnK-fZ-Jrq" id="lz5-br-q8N"/>
                         <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueBackFromComments" modalTransitionStyle="flipHorizontal" id="MYf-hD-IcY"/>
+                        <segue destination="YYA-Kp-fRN" kind="unwind" identifier="unwindToFeed" unwindAction="unwindToFeedWithSegue:" id="IO0-Mn-cge"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8V5-HP-367" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YYA-Kp-fRN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1498.5507246376812" y="885.32608695652186"/>
         </scene>
@@ -284,7 +296,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="cameraButton" destination="oJB-0x-yt6" id="m4A-sG-TzZ"/>
                         <segue destination="4gF-B7-isP" kind="presentation" identifier="segueToCaption" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="zIo-Fw-tpf"/>
                     </connections>
                 </viewController>
@@ -420,7 +431,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Item" id="xuQ-qT-t1I"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yQs-YK-1OV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yQs-YK-1OV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </navigationBar>

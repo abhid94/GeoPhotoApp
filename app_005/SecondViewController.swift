@@ -19,6 +19,10 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     var coordinatesInfo = CLLocationCoordinate2D()
     var picInfo = [String : Any]()
     
+    @IBAction func unwindToFeed(segue: UIStoryboardSegue){
+        
+    }
+    
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
