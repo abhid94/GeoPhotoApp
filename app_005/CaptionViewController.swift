@@ -62,6 +62,7 @@ class CaptionViewController: UIViewController {
             GeoPhoto["location"] = location
             GeoPhoto["upVotes"] = 0
             GeoPhoto["upVoters"] = []
+            GeoPhoto["comments"] = []
             GeoPhoto["caption"] = captionText.text ?? ""
             print("CAPTION ",captionText.text!)
             GeoPhoto.saveInBackground()
@@ -74,6 +75,20 @@ class CaptionViewController: UIViewController {
         }
         
     }
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBAction func saveToGallery(_ sender: Any) {
+        let imageRepresentation = UIImageJPEGRepresentation(self.reviewImage.image!, 0)
+        let imageData = UIImage(data: imageRepresentation!)
+        UIImageWriteToSavedPhotosAlbum(imageData!, nil, nil, nil)
+        
+        saveButton.setTitleColor(UIColor .green, for: UIControlState.normal)
+        
+    }
+    
+    
+    
 
     /*
     // MARK: - Navigation

@@ -17,6 +17,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     var sortMethod = -1
     var radius = 2.0
     var sortMetric = "createdAt"
+    var objectToLook = PFObject(className: "GeoPhoto")
     
     @IBOutlet weak var changeRadiusControl: UISegmentedControl!
     @IBOutlet weak var sortMethodControl: UISegmentedControl!
@@ -143,7 +144,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BaseTableViewCell
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         //cell.titleLabel.text = object?.object(forKey: "objectId") as? String
         
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
@@ -180,6 +181,18 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     
+    @IBAction func goToComments(_ sender: Any) {
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
+        let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
+        self.objectToLook = self.object(at: hitIndex)!
+        
+        DispatchQueue.main.async(){
+            print("going through segue")
+            self.performSegue(withIdentifier: "showDetail", sender: self)
+            
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -187,7 +200,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             self.loadNextPage()
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            self.performSegue(withIdentifier: "showDetail", sender: self)
+            //self.performSegue(withIdentifier: "showDetail", sender: self)
             
         }
         
@@ -195,16 +208,22 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
         if segue.identifier == "showDetail" {
-            let indexPath = self.tableView.indexPathForSelectedRow
-            let detailVC = segue.destination as! PreviewViewController
+            //let indexPath = self.tableView.indexPathForSelectedRow
+            let detailVC = segue.destination as! CommentsTableViewController
             
-            let object = self.object(at: indexPath)
             
-            detailVC.titleString = object?.object(forKey: "objectId") as? String
-            detailVC.imageFile = object?.object(forKey: "imageFile") as? PFFile
+            let object = self.objectToLook//self.object(at: indexPath)
             
-            self.tableView.deselectRow(at: indexPath!, animated: true)
+            detailVC.titleString = object.objectId
+            print("one")
+            print(object.objectId!)
+            print("two")
+            detailVC.imageFile = object.object(forKey: "imageFile") as? PFFile
+            detailVC.commentsArray = (object.object(forKey: "comments") as? [String])!
+            
+            //self.tableView.deselectRow(at: indexPath!, animated: true)
         }
         
         
