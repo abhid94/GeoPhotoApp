@@ -75,6 +75,20 @@ class CaptionViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func saveToGallery(_ sender: Any) {
+        let imageRepresentation = UIImagePNGRepresentation(self.reviewImage.image!)
+        let imageData = UIImage(data: imageRepresentation!)
+        UIImageWriteToSavedPhotosAlbum(imageData!, nil, nil, nil)
+        
+        let alert = UIAlertController(title: "Completed", message: "Image has been saved!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
 
     /*
     // MARK: - Navigation
