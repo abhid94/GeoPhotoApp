@@ -252,7 +252,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvC-DK-w1C">
-                                <rect key="frame" x="329" y="89" width="73" height="30"/>
+                                <rect key="frame" x="262" y="52" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -265,6 +265,7 @@
                     <connections>
                         <outlet property="captionText" destination="9JF-UC-dfE" id="vAN-cI-nAw"/>
                         <outlet property="reviewImage" destination="0Qt-0W-o89" id="Ba5-c7-OZ7"/>
+                        <outlet property="saveButton" destination="nvC-DK-w1C" id="Cc4-y4-vGt"/>
                         <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueAfterCaption" id="Hf1-Oc-2Wb"/>
                     </connections>
                 </viewController>

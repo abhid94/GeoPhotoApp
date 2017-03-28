@@ -76,16 +76,14 @@ class CaptionViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     @IBAction func saveToGallery(_ sender: Any) {
         let imageRepresentation = UIImageJPEGRepresentation(self.reviewImage.image!, 0)
         let imageData = UIImage(data: imageRepresentation!)
         UIImageWriteToSavedPhotosAlbum(imageData!, nil, nil, nil)
         
-        
-        let alert = UIAlertController(title: "Completed", message: "Image has been saved!", preferredStyle: UIAlertControllerStyle.alert)
-        self.present(alert, animated: true, completion: nil)
-      //  self.dismiss(animated: true, completion: nil)
-        alert.dismiss(animated: true, completion: nil)
+        saveButton.setTitleColor(UIColor .green, for: UIControlState.normal)
         
     }
     
