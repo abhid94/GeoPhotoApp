@@ -82,10 +82,11 @@ class CaptionViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(imageData!, nil, nil, nil)
         
         
-        let alert = UIAlertController(title: "Completed", message: "Image has been saved!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
+        let alert = UIAlertController(title: "Completed", message: "Image has been saved!", preferredStyle: UIAlertControllerStyle.alert)
         self.present(alert, animated: true, completion: nil)
+      //  self.dismiss(animated: true, completion: nil)
+        alert.dismiss(animated: true, completion: nil)
+        
     }
     
     
