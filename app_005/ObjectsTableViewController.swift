@@ -235,7 +235,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let height = tableView.frame.size.height
-        let percentage = 0.85
+        let percentage = 0.95
         
         return CGFloat(height) * CGFloat(percentage);
         
