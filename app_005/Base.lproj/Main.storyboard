@@ -317,6 +317,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="distance"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="k8c-zo-vXw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -327,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-973.91304347826099" y="886.95652173913049"/>
+            <point key="canvasLocation" x="-975.20000000000005" y="886.50674662668678"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="iQK-dh-K1r">
@@ -452,6 +456,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="375" height="23"/>
         <image name="Bitmap" width="31" height="19"/>
         <image name="Bitmap-1" width="31" height="19"/>
         <image name="Bottem Bar" width="375" height="44"/>
