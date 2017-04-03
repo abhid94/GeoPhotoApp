@@ -30,11 +30,11 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 4" translatesAutoresizingMaskIntoConstraints="NO" id="1ng-CH-CYf">
-                                            <rect key="frame" x="316" y="66" width="46" height="128"/>
+                                            <rect key="frame" x="317" y="28" width="46" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-n3-LTS">
-                                            <rect key="frame" x="311" y="66" width="58" height="40"/>
+                                            <rect key="frame" x="312" y="28" width="58" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Bitmap-1">
                                                 <color key="titleColor" red="0.27129289519999999" green="0.86042592009999996" blue="0.46149348849999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -44,7 +44,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPz-hm-Niv">
-                                            <rect key="frame" x="311" y="154" width="56" height="40"/>
+                                            <rect key="frame" x="312" y="116" width="56" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Bitmap">
                                                 <color key="titleColor" red="0.81474064089999998" green="0.22910442880000001" blue="0.11816876799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -54,7 +54,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-nZ-5t0">
-                                            <rect key="frame" x="308" y="120" width="63" height="22"/>
+                                            <rect key="frame" x="309" y="82" width="63" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                             <size key="titleShadowOffset" width="10" height="11"/>
@@ -78,9 +78,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAX-Li-kEI">
-                                            <rect key="frame" x="325" y="360" width="31" height="30"/>
+                                            <rect key="frame" x="324" y="355" width="35" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button" image="CommentsButton">
+                                            <state key="normal" title="Button" image="message_icon">
                                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -144,7 +144,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDF-ll-YSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706.39999999999998" y="885.60719640179911"/>
+            <point key="canvasLocation" x="706.39999999999998" y="884.70764617691157"/>
         </scene>
         <!--Comments Table View Controller-->
         <scene sceneID="7mt-Ht-YG6">
@@ -461,13 +461,13 @@
         <image name="Bitmap-1" width="31" height="19"/>
         <image name="Bottem Bar" width="375" height="44"/>
         <image name="Camera" width="32" height="24"/>
-        <image name="CommentsButton" width="56" height="56"/>
         <image name="Fire" width="18" height="28"/>
         <image name="LoadingScreens" width="375" height="667"/>
         <image name="Oval" width="49" height="49"/>
         <image name="Rectangle" width="375" height="103"/>
         <image name="Rectangle 4" width="43" height="124"/>
         <image name="distance" width="27" height="33"/>
+        <image name="message_icon" width="31" height="31"/>
         <image name="second" width="30" height="30"/>
         <image name="w-3829" width="750" height="1334"/>
     </resources>
