@@ -6,18 +6,21 @@ PODS:
   - ParseUI (1.2.0):
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
+  - Popover (1.0.4)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
   - Parse
   - ParseUI
+  - Popover
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   NVActivityIndicatorView: 5754be63ceecd1df8af37d3c088d81872feeb8b8
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
+  Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
 
-PODFILE CHECKSUM: 316e9d79a329427858b0b569a25448f939813d75
+PODFILE CHECKSUM: 3c7bd5a4d655fdd02bfd2af58729627a2d049bd8
 
 COCOAPODS: 1.2.0

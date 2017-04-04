@@ -316,6 +316,9 @@
                                 <rect key="frame" x="47" y="629" width="27" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="distance"/>
+                                <connections>
+                                    <action selector="tappedDistanceButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="nWw-Dl-WRY"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="k8c-zo-vXw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="23"/>
@@ -326,6 +329,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="distanceButton" destination="ZDJ-XG-ivJ" id="GcV-L9-qRh"/>
                         <segue destination="4gF-B7-isP" kind="presentation" identifier="segueToCaption" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="zIo-Fw-tpf"/>
                     </connections>
                 </viewController>

@@ -8,12 +8,22 @@
 
 import UIKit
 import Parse
-
+import Popover
 
 class SecondViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     
+    @IBOutlet weak var distanceButton: UIButton!
+    
+    fileprivate var texts = ["2km", "10km", "100km"]
+    
+    fileprivate var popover: Popover!
+    fileprivate var popoverOptions: [PopoverOption] = [
+        .type(.up),
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+    ]
+
 
     var locationManager = CLLocationManager()
     var coordinatesInfo = CLLocationCoordinate2D()
@@ -73,6 +83,39 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
             }
         }
     }
+    
+    @IBAction func tappedDistanceButton(_ sender: UIButton) {
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 135))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        self.popover = Popover(options: self.popoverOptions)
+        
+        self.popover.show(tableView, fromView: self.distanceButton)
+    }
 
 }
+
+extension SecondViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(texts[indexPath.row])
+        self.popover.dismiss()
+    }
+}
+
+extension SecondViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
+        return cell
+    }
+}
+
 

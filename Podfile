@@ -10,6 +10,7 @@ target 'app_005' do
   pod 'Parse'
   pod 'ParseUI'
   pod 'NVActivityIndicatorView'
+  pod "Popover"
 
   target 'app_005Tests' do
     inherit! :search_paths
