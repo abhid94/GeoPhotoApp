@@ -26,7 +26,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.up),
-        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+        .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
     ]
 
 
@@ -94,34 +94,31 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     @IBAction func tappedDistanceButton(_ sender: UIButton) {
         whichPopover = 0
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 80, height: 135))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 100, height: 135))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
         
         tableView.separatorColor = UIColor.clear
-        tableView.backgroundColor = UIColor.darkGray
+        
         
         self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: self.distanceButton)
         self.popover.popoverColor = UIColor.darkGray
-        self.popover.backgroundColor = UIColor.darkGray
     }
     
     @IBAction func tappedSortButton(_ sender: UIButton) {
         whichPopover = 1
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 160, height: 90))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 120, height: 90))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
         
         tableView.separatorColor = UIColor.clear
-        tableView.backgroundColor = UIColor.darkGray
         
         self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: self.sortButton)
         self.popover.popoverColor = UIColor.darkGray
-        self.popover.backgroundColor = UIColor.darkGray
     }
     
 
@@ -162,6 +159,7 @@ extension SecondViewController: UITableViewDataSource {
             cell.textLabel?.text = String(self.text1[(indexPath as NSIndexPath).row]) + "km"
             cell.textLabel?.textColor = UIColor.white
             cell.backgroundColor =  UIColor.darkGray
+            cell.textLabel?.textAlignment = .center
             return cell
         } else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
