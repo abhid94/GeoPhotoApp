@@ -10,13 +10,18 @@ import UIKit
 import Parse
 import Popover
 
+var whichPopover: Int = -1
+
 class SecondViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var distanceButton: UIButton!
+    @IBOutlet weak var sortButton: UIButton!
     
-    fileprivate var texts = ["2km", "10km", "100km"]
+    fileprivate var text1 = [2, 10, 100]
+    fileprivate var text2 = ["New", "Popular"]
+    
     
     fileprivate var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
@@ -25,16 +30,13 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     ]
 
 
+    var myDict = ["radius": 2, "sort": "new"] as [String : Any]
+    
     var locationManager = CLLocationManager()
     var coordinatesInfo = CLLocationCoordinate2D()
     var picInfo = [String : Any]()
     
     @IBAction func unwindToFeed(segue: UIStoryboardSegue){
-        
-    }
-    @IBAction func sortByVotes(_ sender: Any) {
-        print("sort button pressed votes")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sortByVotes"), object: nil)
         
     }
     
@@ -91,40 +93,89 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     }
     
     @IBAction func tappedDistanceButton(_ sender: UIButton) {
-        
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 135))
+        whichPopover = 0
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 80, height: 135))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
         
+        tableView.separatorColor = UIColor.clear
+        tableView.backgroundColor = UIColor.darkGray
+        
         self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: self.distanceButton)
+        self.popover.popoverColor = UIColor.darkGray
         self.popover.backgroundColor = UIColor.darkGray
     }
+    
+    @IBAction func tappedSortButton(_ sender: UIButton) {
+        whichPopover = 1
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 160, height: 90))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        
+        tableView.separatorColor = UIColor.clear
+        tableView.backgroundColor = UIColor.darkGray
+        
+        self.popover = Popover(options: self.popoverOptions)
+        self.popover.show(tableView, fromView: self.sortButton)
+        self.popover.popoverColor = UIColor.darkGray
+        self.popover.backgroundColor = UIColor.darkGray
+    }
+    
 
 }
 
 extension SecondViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(texts[indexPath.row])
+        
+        if(whichPopover == 0) {
+            self.myDict["radius"] = text1[indexPath.row]
+            //print(self.myDict["radius"]!)
+             NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: myDict)
+        } else {
+            self.myDict["sort"] = text2[indexPath.row]
+            //print(self.myDict["sort"]!)
+             NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: myDict)
+        }
+        
         self.popover.dismiss()
     }
 }
 
 extension SecondViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if(whichPopover == 0) {
+            return 3
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
-        cell.textLabel?.textColor = UIColor.white
-        cell.backgroundColor =  UIColor.darkGray
-        return cell
+        
+        if(whichPopover == 0) {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = String(self.text1[(indexPath as NSIndexPath).row]) + "km"
+            cell.textLabel?.textColor = UIColor.white
+            cell.backgroundColor =  UIColor.darkGray
+            return cell
+        } else {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = self.text2[(indexPath as NSIndexPath).row]
+            cell.textLabel?.textColor = UIColor.white
+            cell.backgroundColor =  UIColor.darkGray
+            cell.textLabel?.textAlignment = .center
+            return cell
+        }
+        
+        
     }
 }
+
+
 
 

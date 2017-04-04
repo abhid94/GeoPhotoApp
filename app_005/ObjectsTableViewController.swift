@@ -95,16 +95,25 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         return query
     }
     
-    func loadList(){
-        print("in loadlist")
-        sortMethod = 0;
-        sortMetric = "upVotes"
+    func loadList(_ notification: Notification){
+        if let myDict = notification.object as? [String: Any] {
+            if let myInt = myDict["radius"] as? Int {
+                self.radius = Double(myInt)
+            }
+            if let myText = myDict["sort"] as? String {
+                self.sortMethod = 0
+                if(myText == "New") {
+                    self.sortMetric = "createdAt"
+                } else {
+                    self.sortMetric = "upVotes"
+                }
+            }
+        }
         self.loadObjects()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadList),name:NSNotification.Name(rawValue: "sortByVotes"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
     @IBAction func addUpvote(_ sender: AnyObject) {
