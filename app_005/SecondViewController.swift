@@ -32,6 +32,11 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     @IBAction func unwindToFeed(segue: UIStoryboardSegue){
         
     }
+    @IBAction func sortByVotes(_ sender: Any) {
+        print("sort button pressed votes")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sortByVotes"), object: nil)
+        
+    }
     
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -65,6 +70,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         }
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -90,9 +96,10 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
-        self.popover = Popover(options: self.popoverOptions)
         
+        self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: self.distanceButton)
+        self.popover.backgroundColor = UIColor.darkGray
     }
 
 }
@@ -114,6 +121,8 @@ extension SecondViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor =  UIColor.darkGray
         return cell
     }
 }

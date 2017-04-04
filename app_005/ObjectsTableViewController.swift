@@ -95,6 +95,18 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         return query
     }
     
+    func loadList(){
+        print("in loadlist")
+        sortMethod = 0;
+        sortMetric = "upVotes"
+        self.loadObjects()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadList),name:NSNotification.Name(rawValue: "sortByVotes"), object: nil)
+        
+    }
+    
     @IBAction func addUpvote(_ sender: AnyObject) {
         
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
@@ -255,7 +267,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         sleep(1)
         super.viewDidLoad()
-        
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.paginationEnabled = true
         self.objectsPerPage = 30
         
