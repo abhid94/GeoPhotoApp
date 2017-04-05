@@ -50,6 +50,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
             imagePicker.allowsEditing = false
+            imagePicker.cameraFlashMode = UIImagePickerControllerCameraFlashMode.off
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
