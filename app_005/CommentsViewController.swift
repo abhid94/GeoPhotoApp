@@ -97,11 +97,12 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
         //self.textField.delegate = self;
         //self.navigationController..
         
-        let backgroundImg = UIImageView(image: UIImage(imageLiteralResourceName: "w-4248"))
-        self.tableView.backgroundView = backgroundImg
+        //let backgroundImg = UIImageView(image: UIImage(imageLiteralResourceName: "w-4248"))
+        //self.tableView.backgroundView = backgroundImg
         //self.mainView.backgroundColor =  UIColor(patternImage: UIImage(imageLiteralResourceName: "w-3829"))
         self.tableView.backgroundColor = UIColor.clear
-        backgroundImg.makeBlurImage(targetImageView: backgroundImg)
+        //backgroundImg.makeBlurImage(targetImageView: backgroundImg)
+        
         
         self.title = self.titleString
         print(self.commentsArray.count)
