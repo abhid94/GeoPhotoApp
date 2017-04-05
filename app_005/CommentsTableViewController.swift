@@ -101,6 +101,10 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
             super.viewDidLoad()
             //self.textField.delegate = self;
             //self.navigationController..
+            let backgroundImg = UIImageView(image: UIImage(imageLiteralResourceName: "w-3829"))
+            self.tableView.backgroundView = backgroundImg
+            backgroundImg.makeBlurImage(targetImageView: backgroundImg)
+            
             self.title = self.titleString
             print(self.commentsArray.count)
             self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
@@ -232,7 +236,9 @@ class CommentsTableViewController: UITableViewController, UITextFieldDelegate {
 
         // Configure the cell...
         cell?.commentLabel.text = self.commentsArray[indexPath.row]
+        cell?.commentLabel.textColor = UIColor.white
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
+        cell?.backgroundColor = UIColor.clear
         return cell!
     }
     

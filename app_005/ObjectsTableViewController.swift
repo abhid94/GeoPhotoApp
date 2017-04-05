@@ -19,49 +19,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     var sortMetric = "createdAt"
     var objectToLook = PFObject(className: "GeoPhoto")
     
-    @IBOutlet weak var changeRadiusControl: UISegmentedControl!
-    @IBOutlet weak var sortMethodControl: UISegmentedControl!
-    
-    @IBAction func changeRadiusMethod(_ sender: Any) {
-        
-        let indexPath = IndexPath(row: 0 , section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
-        
-        switch changeRadiusControl.selectedSegmentIndex
-        {
-        case 0:
-            radius = 2.0;
-        case 1:
-            radius = 20.0;
-        default:
-            break
-        }
-        self.loadObjects()
-        
-       
-    }
-    @IBAction func changeSortMethod(_ sender: Any) {
-        
-        
-        let indexPath = IndexPath(row: 0 , section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
-        
-        switch sortMethodControl.selectedSegmentIndex
-        {
-        case 0:
-            sortMethod = 0;
-            sortMetric = "createdAt"
-        case 1:
-            sortMethod = 0;
-            sortMetric = "upVotes"
-        default:
-            break
-        }
-        self.loadObjects()
-     
-    }
-    
-    
     override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: self.parseClassName!)
         
