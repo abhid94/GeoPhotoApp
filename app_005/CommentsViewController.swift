@@ -97,7 +97,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
         //self.textField.delegate = self;
         //self.navigationController..
         
-        let backgroundImg = UIImageView(image: UIImage(imageLiteralResourceName: "w-3829"))
+        let backgroundImg = UIImageView(image: UIImage(imageLiteralResourceName: "w-4248"))
         self.tableView.backgroundView = backgroundImg
         //self.mainView.backgroundColor =  UIColor(patternImage: UIImage(imageLiteralResourceName: "w-3829"))
         self.tableView.backgroundColor = UIColor.clear
@@ -123,6 +123,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.sendButton.layer.cornerRadius = 5
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 2))
         
         //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
