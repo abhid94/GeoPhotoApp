@@ -189,7 +189,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         if segue.identifier == "showDetail" {
             //let indexPath = self.tableView.indexPathForSelectedRow
-            let detailVC = segue.destination as! CommentsTableViewController
+            let detailVC = segue.destination as! CommentsViewController
             
             
             let object = self.objectToLook//self.object(at: indexPath)

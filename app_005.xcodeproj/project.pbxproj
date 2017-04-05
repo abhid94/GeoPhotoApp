@@ -13,6 +13,7 @@
 		7CE69A411E55AD7500F2E0C1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */; };
 		91EB2AF5FFD90030E6645909 /* Pods_app_005Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F417568E7E9B5E83DD6F70A /* Pods_app_005Tests.framework */; };
 		9D1CED8B1E7E9F840070F916 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CED8A1E7E9F840070F916 /* CaptionViewController.swift */; };
+		9D662B741E947C6900669784 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D662B731E947C6900669784 /* CommentsViewController.swift */; };
 		9D69D02E1E4575F2009257D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D02D1E4575F2009257D3 /* AppDelegate.swift */; };
 		9D69D0321E4575F2009257D3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D0311E4575F2009257D3 /* SecondViewController.swift */; };
 		9D69D0351E4575F2009257D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D69D0331E4575F2009257D3 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		7CE69A401E55AD7500F2E0C1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		99005C3753BF1139416887A8 /* Pods_app_005UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_005UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1CED8A1E7E9F840070F916 /* CaptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
+		9D662B731E947C6900669784 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		9D69D02A1E4575F2009257D3 /* app_005.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app_005.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D69D02D1E4575F2009257D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D69D0311E4575F2009257D3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				D8D6CCD81E7CDB00001F0084 /* LoadingScreenViewController.swift */,
 				9DB951E11E7D1F5900F6F1F8 /* NoLocationViewController.swift */,
 				9D69D0311E4575F2009257D3 /* SecondViewController.swift */,
+				9D662B731E947C6900669784 /* CommentsViewController.swift */,
 				9DB6A42C1E88028E001AF3F4 /* CommentsTableViewController.swift */,
 				9DB6A42E1E880854001AF3F4 /* CommentCellController.swift */,
 				7CE69A3E1E55A3D800F2E0C1 /* ObjectsTableViewController.swift */,
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB6A42D1E88028E001AF3F4 /* CommentsTableViewController.swift in Sources */,
+				9D662B741E947C6900669784 /* CommentsViewController.swift in Sources */,
 				9D1CED8B1E7E9F840070F916 /* CaptionViewController.swift in Sources */,
 				7CE69A3F1E55A3D800F2E0C1 /* ObjectsTableViewController.swift in Sources */,
 				9D6F469E1E73A06C00C2B1A8 /* TabBarController.swift in Sources */,

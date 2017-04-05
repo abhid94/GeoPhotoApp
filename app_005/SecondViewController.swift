@@ -40,6 +40,10 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         
     }
     
+    @IBAction func unwindToFeed2(segue: UIStoryboardSegue){
+        
+    }
+    
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
