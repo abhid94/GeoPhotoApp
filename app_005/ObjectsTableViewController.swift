@@ -19,49 +19,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     var sortMetric = "createdAt"
     var objectToLook = PFObject(className: "GeoPhoto")
     
-    @IBOutlet weak var changeRadiusControl: UISegmentedControl!
-    @IBOutlet weak var sortMethodControl: UISegmentedControl!
-    
-    @IBAction func changeRadiusMethod(_ sender: Any) {
-        
-        let indexPath = IndexPath(row: 0 , section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
-        
-        switch changeRadiusControl.selectedSegmentIndex
-        {
-        case 0:
-            radius = 2.0;
-        case 1:
-            radius = 20.0;
-        default:
-            break
-        }
-        self.loadObjects()
-        
-       
-    }
-    @IBAction func changeSortMethod(_ sender: Any) {
-        
-        
-        let indexPath = IndexPath(row: 0 , section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
-        
-        switch sortMethodControl.selectedSegmentIndex
-        {
-        case 0:
-            sortMethod = 0;
-            sortMetric = "createdAt"
-        case 1:
-            sortMethod = 0;
-            sortMetric = "upVotes"
-        default:
-            break
-        }
-        self.loadObjects()
-     
-    }
-    
-    
     override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: self.parseClassName!)
         
@@ -93,6 +50,27 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         locationManager.stopUpdatingLocation()
         return query
+    }
+    
+    func loadList(_ notification: Notification){
+        if let myDict = notification.object as? [String: Any] {
+            if let myInt = myDict["radius"] as? Int {
+                self.radius = Double(myInt)
+            }
+            if let myText = myDict["sort"] as? String {
+                self.sortMethod = 0
+                if(myText == "New") {
+                    self.sortMetric = "createdAt"
+                } else {
+                    self.sortMetric = "upVotes"
+                }
+            }
+        }
+        self.loadObjects()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
     }
     
     @IBAction func addUpvote(_ sender: AnyObject) {
@@ -211,7 +189,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         if segue.identifier == "showDetail" {
             //let indexPath = self.tableView.indexPathForSelectedRow
-            let detailVC = segue.destination as! CommentsTableViewController
+            let detailVC = segue.destination as! CommentsViewController
             
             
             let object = self.objectToLook//self.object(at: indexPath)
@@ -235,7 +213,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let height = tableView.frame.size.height
-        let percentage = 0.85
+        let percentage = 0.95
         
         return CGFloat(height) * CGFloat(percentage);
         
@@ -255,7 +233,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         sleep(1)
         super.viewDidLoad()
-        
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.paginationEnabled = true
         self.objectsPerPage = 30
         

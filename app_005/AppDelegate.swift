@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.clientKey = ""
             $0.server = "http://128.199.154.234:9999/parse"
         }
+        UIApplication.shared.statusBarStyle = .lightContent
         Parse.initialize(with: configuration)
         return true
     }

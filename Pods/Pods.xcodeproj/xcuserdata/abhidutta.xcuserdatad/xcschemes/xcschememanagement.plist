@@ -56,6 +56,11 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>Popover.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -80,6 +85,16 @@
 			<true/>
 		</dict>
 		<key>7259A8EE8E7A52E049A5D402762CDB02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>774FDA92E34A92B031937F13CAA386DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FB1B5A85C63FD3E6633C7E5B3D5E5DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

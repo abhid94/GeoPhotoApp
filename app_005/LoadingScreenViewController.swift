@@ -32,7 +32,7 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate, 
         let x = (self.view.frame.size.width) - 75
         let y = (self.view.frame.size.height) - 75
         let frame = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
-        let activityIndicatorView = NVActivityIndicatorView(frame: frame,                                                          type: NVActivityIndicatorType(rawValue: val)!, color: UIColor.black)
+        let activityIndicatorView = NVActivityIndicatorView(frame: frame,                                                          type: NVActivityIndicatorType(rawValue: val)!, color: UIColor.white)
         activityIndicatorView.padding = 20
         if val == NVActivityIndicatorType.orbit.rawValue {
             activityIndicatorView.padding = 0

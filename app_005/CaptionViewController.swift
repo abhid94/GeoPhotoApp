@@ -49,7 +49,12 @@ class CaptionViewController: UIViewController {
     }
 
     @IBAction func approvePhoto(_ sender: Any) {
-        
+        if(self.captionText.text == ""){
+            let alert = UIAlertController(title: "Wait!", message: "Please enter a caption 😛", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if  (pickedImage != nil) {
             
             let imageData = UIImageJPEGRepresentation(pickedImage, 0) // "0" indicates lowest size/quality

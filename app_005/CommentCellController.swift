@@ -9,8 +9,8 @@
 import UIKit
 
 class CommentCellController: UITableViewCell {
-
-    @IBOutlet weak var commentLabel: UILabel!
+    
+    @IBOutlet weak var commentLabel2: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
