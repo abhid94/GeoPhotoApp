@@ -28,7 +28,34 @@ class CaptionViewController: UIViewController {
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    
+    
+    func dismissKeyboard() {
+        
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,17 +63,7 @@ class CaptionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBOutlet weak var reviewImage: UIImageView!
-
-    @IBAction func cancelCaption(_ sender: Any) {
-        DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueAfterCaption", sender: self)
-        }
-    }
     
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
 
     @IBAction func approvePhoto(_ sender: Any) {
         if(self.captionText.text == ""){
@@ -76,7 +93,7 @@ class CaptionViewController: UIViewController {
             print("Something, went wrong")
         }
         DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueAfterCaption", sender: self)
+            self.performSegue(withIdentifier: "unwindToFeed", sender: self)
         }
         
     }
@@ -89,6 +106,7 @@ class CaptionViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(imageData!, nil, nil, nil)
         
         saveButton.setTitleColor(UIColor .green, for: UIControlState.normal)
+        saveButton.setTitle("Saved!", for: .normal)
         
     }
     
