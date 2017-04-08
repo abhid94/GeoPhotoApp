@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tEl-oy-rFf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tEl-oy-rFf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,12 +107,12 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="GeoPhoto"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="fnf-eb-HlC" kind="presentation" identifier="showDetail" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="RLL-Jz-gfL"/>
+                        <segue destination="fnf-eb-HlC" kind="presentation" identifier="showDetail" modalPresentationStyle="overCurrentContext" id="RLL-Jz-gfL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDF-ll-YSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706.39999999999998" y="884.70764617691157"/>
+            <point key="canvasLocation" x="-34" y="886"/>
         </scene>
         <!--Comments View Controller-->
         <scene sceneID="FGX-ts-LyE">
@@ -140,7 +140,7 @@
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <segue destination="XmA-T5-bt1" kind="unwind" identifier="unwindToFeed2" unwindAction="unwindToFeed2WithSegue:" id="8Bh-3b-Csk"/>
+                                                <segue destination="XmA-T5-bt1" kind="unwind" identifier="unwindToFeed" unwindAction="unwindToFeedWithSegue:" id="ItI-q9-JLm"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -219,7 +219,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23f-qo-v2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="XmA-T5-bt1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="704.79999999999995" y="1620.5397301349326"/>
+            <point key="canvasLocation" x="878" y="887"/>
         </scene>
         <!--Caption View Controller-->
         <scene sceneID="NTT-e1-NxW">
@@ -233,15 +233,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-Bw-JFZ">
-                                <rect key="frame" x="128" y="25" width="107" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbs-Uu-Hvu">
-                                <rect key="frame" x="20" y="20" width="65" height="30"/>
+                                <rect key="frame" x="31" y="550" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="approve"/>
                                 <connections>
@@ -249,32 +242,43 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-1e-dRO">
-                                <rect key="frame" x="275" y="21" width="46" height="30"/>
+                                <rect key="frame" x="289" y="550" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="cancel"/>
                                 <connections>
-                                    <action selector="cancelCaption:" destination="4gF-B7-isP" eventType="touchUpInside" id="3Mh-xX-fzx"/>
+                                    <segue destination="Lgn-uo-3NN" kind="unwind" unwindAction="unwindToFeedWithSegue:" id="JHo-xa-Sag"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Qt-0W-o89">
-                                <rect key="frame" x="0.0" y="146" width="414" height="590"/>
+                                <rect key="frame" x="0.0" y="15" width="375" height="513"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-UC-dfE">
-                                <rect key="frame" x="67" y="90" width="229" height="30"/>
+                                <rect key="frame" x="77" y="604" width="229" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvC-DK-w1C">
-                                <rect key="frame" x="262" y="52" width="73" height="30"/>
+                                <rect key="frame" x="155" y="550" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveToGallery:" destination="4gF-B7-isP" eventType="touchUpInside" id="tzN-Jm-frd"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="M1S-B2-mFH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-Bw-JFZ">
+                                <rect key="frame" x="84" y="534" width="107" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -282,12 +286,12 @@
                         <outlet property="captionText" destination="9JF-UC-dfE" id="vAN-cI-nAw"/>
                         <outlet property="reviewImage" destination="0Qt-0W-o89" id="Ba5-c7-OZ7"/>
                         <outlet property="saveButton" destination="nvC-DK-w1C" id="Cc4-y4-vGt"/>
-                        <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueAfterCaption" id="Hf1-Oc-2Wb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0a-Bf-dAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Lgn-uo-3NN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-972" y="1732"/>
+            <point key="canvasLocation" x="-975.20000000000005" y="1738.3808095952024"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -366,10 +370,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="w-3829" translatesAutoresizingMaskIntoConstraints="NO" id="Rws-fn-uiH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoadingScreens" translatesAutoresizingMaskIntoConstraints="NO" id="Rws-fn-uiH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.1759922206401825" blue="0.28003114461898804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.24250558018684387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GeoPhoto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm0-aM-7N5">
                                 <rect key="frame" x="50" y="166" width="275" height="135"/>
@@ -390,17 +394,17 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.23860576748847961" blue="0.32526084780693054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.24250558018684387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="Rws-fn-uiH" id="Hio-Lb-Pyv"/>
                         <outlet property="goToTabsButton" destination="dxF-MU-ChM" id="LG7-MD-aZT"/>
-                        <segue destination="4FR-At-zNp" kind="show" identifier="segueToLoadingScreen" id="tX9-PT-T4z"/>
+                        <segue destination="4FR-At-zNp" kind="presentation" identifier="segueToLoadingScreen" modalTransitionStyle="crossDissolve" id="tX9-PT-T4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQb-03-AuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-971.01449275362324" y="0.0"/>
+            <point key="canvasLocation" x="-972" y="1"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="aFM-Pc-agZ">
@@ -417,10 +421,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoadingScreens" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-Mq-ENU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.1759922206401825" blue="0.28003114461898804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.24250558018684387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.23860576748847961" blue="0.32526084780693054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.24250558018684387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <segue destination="8rJ-Kc-sve" kind="presentation" identifier="segueToMainScreen" id="dtH-pB-Sv0"/>
@@ -486,7 +490,7 @@
         <image name="Camera" width="32" height="24"/>
         <image name="Fire" width="18" height="28"/>
         <image name="Line" width="252" height="1"/>
-        <image name="LoadingScreens" width="375" height="667"/>
+        <image name="LoadingScreens" width="421" height="750"/>
         <image name="Oval" width="49" height="49"/>
         <image name="Rectangle" width="375" height="103"/>
         <image name="Rectangle 4" width="43" height="124"/>
@@ -494,9 +498,8 @@
         <image name="distance" width="27" height="33"/>
         <image name="message_icon" width="31" height="31"/>
         <image name="second" width="30" height="30"/>
-        <image name="w-3829" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hf1-Oc-2Wb"/>
+        <segue reference="dtH-pB-Sv0"/>
     </inferredMetricsTieBreakers>
 </document>

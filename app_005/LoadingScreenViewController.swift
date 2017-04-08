@@ -18,8 +18,12 @@ class LoadingScreenViewController: UIViewController, CLLocationManagerDelegate, 
         
         super.viewDidLoad()
         self.loadingAnimation()
-        self.checkLocation()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.checkLocation()
     }
     
     /*
