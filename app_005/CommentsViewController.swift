@@ -139,7 +139,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
     
     func swipeRight(recognizer : UISwipeGestureRecognizer) {
 
-        self.performSegue(withIdentifier: "unwindToFeed2", sender: self)
+        self.performSegue(withIdentifier: "unwindToFeed", sender: self)
 
     }
     override func didReceiveMemoryWarning() {

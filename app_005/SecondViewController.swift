@@ -39,10 +39,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     @IBAction func unwindToFeed(segue: UIStoryboardSegue){
         
     }
-    
-    @IBAction func unwindToFeed2(segue: UIStoryboardSegue){
-        
-    }
+
     
     @IBAction func openCamera(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -68,6 +65,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         }
         self.dismiss(animated: true, completion: nil)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

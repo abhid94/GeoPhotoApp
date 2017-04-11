@@ -44,7 +44,7 @@ class StartViewController: UIViewController {
             self.goToTabsButton.alpha = 1.0
             self.goToTabsButton.center.y -= 40
         }
-        self.backgroundImage.makeBlurImage(targetImageView: backgroundImage)
+        //self.backgroundImage.makeBlurImage(targetImageView: backgroundImage)
     }
     
     @IBAction func goToTabsPressed(_ sender: Any) {
