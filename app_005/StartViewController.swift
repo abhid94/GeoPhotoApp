@@ -9,6 +9,8 @@
 import UIKit
 import CoreGraphics
 import Parse
+import Pages
+
 
 extension UIImageView
 {
@@ -79,7 +81,7 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         if (PFUser.current() != nil){
             print("User signed up and logged in")
-            self.goToTabs()
+            //self.goToTabs()
         } else {
             
         }
@@ -100,5 +102,6 @@ class StartViewController: UIViewController {
         }
         return randomString
     }
+    
 
 }
