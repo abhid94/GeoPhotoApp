@@ -339,7 +339,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDJ-XG-ivJ">
                                 <rect key="frame" x="7" y="629" width="107" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="distance"/>
+                                <state key="normal" image="radius_icon"/>
                                 <connections>
                                     <action selector="tappedDistanceButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="nWw-Dl-WRY"/>
                                 </connections>
@@ -517,8 +517,8 @@
         <image name="Rectangle" width="375" height="103"/>
         <image name="Rectangle 4" width="43" height="124"/>
         <image name="cross" width="30" height="30"/>
-        <image name="distance" width="27" height="33"/>
         <image name="message_icon" width="31" height="31"/>
+        <image name="radius_icon" width="28" height="34"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
