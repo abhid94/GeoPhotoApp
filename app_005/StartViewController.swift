@@ -9,90 +9,87 @@
 import UIKit
 import CoreGraphics
 import Parse
-import Pages
-
-
-extension UIImageView
-{
-    func makeBlurImage(targetImageView:UIImageView?)
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = targetImageView!.bounds
-        //blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
-        targetImageView?.addSubview(blurEffectView)
-    }
-}
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var paging: UIPageControl!
+    @IBOutlet weak var goToTabsButton: UIButton!
+    
+    var imageArray = [UIImage]()
     var numberOfUsers = -1 as Int;
     
-    //@IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var goToTabsButton: UIButton!
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.backgroundImage.alpha = 0.0
-        self.goToTabsButton.alpha = 0.0
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
-            self.backgroundImage.alpha = 1.0
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 2.0) {
-            self.goToTabsButton.alpha = 1.0
-            self.goToTabsButton.center.y -= 40
-        }
-        //self.backgroundImage.makeBlurImage(targetImageView: backgroundImage)
-    }
-    */
-    
-    
     @IBAction func goToTabsPressed(_ sender: Any) {
-        print("button pressed")
+        
         let username = self.randomString(length: 10)
         let password = "pwd"
         let finalEmail = username+"@fake.com"
         let newUser = PFUser()
+        
         newUser.username = username
         newUser.password = password
         newUser.email = finalEmail
         
-        // Sign up the user asynchronously
-        newUser.signUpInBackground(block: { (succeed, error) -> Void in
-            if ((error) != nil) {
-            } else {
-                print("sign up successful")
-            }
-        })
         self.goToTabs()
     }
     
-    
-    
     func goToTabs(){
-        print("about to segue")
         DispatchQueue.main.async(){
             self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
-            
         }
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        if (PFUser.current() != nil){
-            print("User signed up and logged in")
-            self.goToTabs()
-        } else {
+        mainScrollView.frame = view.frame
+        mainScrollView.showsHorizontalScrollIndicator = false
+        imageArray = [#imageLiteral(resourceName: "Splash Screen"),#imageLiteral(resourceName: "Onboarding screen 1")]
+        configurePageControl()
+        
+        for i in 0..<imageArray.count{
+            
+            let imageView = UIImageView()
+            imageView.image = imageArray[i]
+            imageView.contentMode = .scaleToFill
+            let xPosition = self.view.frame.width * CGFloat(i)
+            imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+            mainScrollView.contentSize.width = mainScrollView.frame.width * CGFloat(i+1)
+            mainScrollView.addSubview(imageView)
             
         }
+        paging.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
+        self.mainScrollView.isPagingEnabled = true
+        
+        if (PFUser.current() != nil){
+            self.goToTabs()
+        }
+    }
+    
+    func changePage(sender: AnyObject) -> () {
+        self.paging.updateCurrentPageDisplay()
+        let x = CGFloat(paging.currentPage) * mainScrollView.frame.size.width
+        mainScrollView.setContentOffset(CGPoint(x: x,y :0), animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        paging.currentPage = Int(pageNumber)
+    }
+    
+    func configurePageControl() {
+
+        self.paging.numberOfPages = imageArray.count
+        self.paging.currentPage = 0
+        self.paging.tintColor = UIColor.red
+        self.paging.pageIndicatorTintColor = UIColor.darkGray
+        self.paging.currentPageIndicatorTintColor = UIColor.black
+        self.view.addSubview(paging)
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
     }
     
@@ -107,17 +104,5 @@ class StartViewController: UIViewController {
         }
         return randomString
     }
-    
-    
-    @IBOutlet weak var zxc: UIButton!
-    
-    
-    @IBAction func temp(_ sender: Any) {
-        
-        self.goToTabs()
-        
-    }
-    
-    
 
 }

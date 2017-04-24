@@ -8,13 +8,11 @@
 
 import UIKit
 import Parse
-import Pages
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,23 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         Parse.initialize(with: configuration)
         
-        let pages = pagesControllerInStoryboard()
-        
-        let navigationController = UINavigationController(rootViewController: pages)
-        navigationController.isNavigationBarHidden = true
-        
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        
         return true
-    }
-    
-    func pagesControllerInStoryboard() -> PagesController {
-        let storyboardIds = ["One","Two"]
-        let  pagesController = PagesController(storyboardIds)
-        return pagesController
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

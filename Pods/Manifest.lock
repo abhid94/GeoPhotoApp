@@ -1,7 +1,6 @@
 PODS:
   - Bolts/Tasks (1.8.4)
   - NVActivityIndicatorView (3.4)
-  - Pages (1.0.0)
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
   - ParseUI (1.2.0):
@@ -11,7 +10,6 @@ PODS:
 
 DEPENDENCIES:
   - NVActivityIndicatorView
-  - Pages
   - Parse
   - ParseUI
   - Popover
@@ -19,11 +17,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   NVActivityIndicatorView: 5754be63ceecd1df8af37d3c088d81872feeb8b8
-  Pages: f3718e6f03a5e2787f6b0bff4becb3c7c19bcebc
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
 
-PODFILE CHECKSUM: 4177bb27b58a41667e646be0dd433a3b0739641c
+PODFILE CHECKSUM: 3c7bd5a4d655fdd02bfd2af58729627a2d049bd8
 
 COCOAPODS: 1.2.0
