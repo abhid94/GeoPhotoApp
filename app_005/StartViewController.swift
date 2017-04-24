@@ -86,7 +86,7 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         if (PFUser.current() != nil){
             print("User signed up and logged in")
-            //self.goToTabs()
+            self.goToTabs()
         } else {
             
         }
