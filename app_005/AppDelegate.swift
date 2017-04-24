@@ -31,17 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: pages)
         navigationController.isNavigationBarHidden = true
         
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
         
         return true
     }
     
     func pagesControllerInStoryboard() -> PagesController {
-        let storyboardIds = ["Two","One"]
-        return PagesController(storyboardIds)
+        let storyboardIds = ["One","Two"]
+        let  pagesController = PagesController(storyboardIds)
+        return pagesController
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

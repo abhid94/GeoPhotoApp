@@ -27,9 +27,10 @@ extension UIImageView
 class StartViewController: UIViewController {
     
     var numberOfUsers = -1 as Int;
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var goToTabsButton: UIButton!
     
+    //@IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var goToTabsButton: UIButton!
+    /*
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.backgroundImage.alpha = 0.0
@@ -48,6 +49,8 @@ class StartViewController: UIViewController {
         }
         //self.backgroundImage.makeBlurImage(targetImageView: backgroundImage)
     }
+    */
+    
     
     @IBAction func goToTabsPressed(_ sender: Any) {
         print("button pressed")
@@ -68,6 +71,8 @@ class StartViewController: UIViewController {
         })
         self.goToTabs()
     }
+    
+    
     
     func goToTabs(){
         print("about to segue")
@@ -102,6 +107,17 @@ class StartViewController: UIViewController {
         }
         return randomString
     }
+    
+    
+    @IBOutlet weak var zxc: UIButton!
+    
+    
+    @IBAction func temp(_ sender: Any) {
+        
+        self.goToTabs()
+        
+    }
+    
     
 
 }
