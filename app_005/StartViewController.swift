@@ -20,7 +20,6 @@ class StartViewController: UIViewController {
     var numberOfUsers = -1 as Int;
     
     @IBAction func goToTabsPressed(_ sender: Any) {
-        
         let username = self.randomString(length: 10)
         let password = "pwd"
         let finalEmail = username+"@fake.com"
@@ -30,6 +29,15 @@ class StartViewController: UIViewController {
         newUser.password = password
         newUser.email = finalEmail
         
+        newUser.signUpInBackground(block: { (succeed, error) -> Void in
+            if ((error) != nil) {
+            } else {
+                print("sign up successful")
+            }
+        })
+        
+        //default.setValue("LoadingViewController", forKey: "LaunchView")
+        
         self.goToTabs()
     }
     
@@ -38,10 +46,17 @@ class StartViewController: UIViewController {
             self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (PFUser.current() != nil){
+            self.goToTabs()
+        }
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         mainScrollView.frame = view.frame
         mainScrollView.showsHorizontalScrollIndicator = false
         imageArray = [#imageLiteral(resourceName: "Splash Screen"),#imageLiteral(resourceName: "Onboarding screen 1")]
@@ -61,9 +76,7 @@ class StartViewController: UIViewController {
         paging.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
         self.mainScrollView.isPagingEnabled = true
         
-        if (PFUser.current() != nil){
-            self.goToTabs()
-        }
+        
     }
     
     func changePage(sender: AnyObject) -> () {

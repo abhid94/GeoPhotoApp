@@ -17,5 +17,7 @@ class BaseTableViewCell: PFTableViewCell {
     @IBOutlet weak var upvoteCounter: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    @IBOutlet weak var suburbLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
 }

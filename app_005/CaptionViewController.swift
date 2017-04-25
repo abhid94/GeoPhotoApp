@@ -14,6 +14,7 @@ class CaptionViewController: UIViewController {
     var coordinates : CLLocationCoordinate2D!
     var info : [String : Any]!
     var pickedImage : UIImage!
+    var suburb = ""
     
     @IBOutlet var captionText: UITextField!
     
@@ -82,13 +83,32 @@ class CaptionViewController: UIViewController {
             
             let location = PFGeoPoint(latitude:(coordinates?.latitude)!,longitude:(coordinates?.longitude)!)
             GeoPhoto["location"] = location
-            GeoPhoto["upVotes"] = 0
-            GeoPhoto["upVoters"] = []
-            GeoPhoto["comments"] = []
-            GeoPhoto["caption"] = captionText.text ?? ""
-            print("CAPTION ",captionText.text!)
-            GeoPhoto.saveInBackground()
-            print("Should be sent to Parse")
+            let requestString = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + "\(coordinates.latitude)" + "," + "\(coordinates.longitude)"
+            //print("REQUEST STRING ", requestString)
+            let url = URL(string: requestString)
+            URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+                guard let data = data, error == nil else { return }
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    let results = json["results"] as? [[String: Any]] ?? []
+                    let addrinfo = results[0]["address_components"] as? [[String: Any]] ?? []
+                    //print(addrinfo)
+                    self.suburb = (addrinfo[2]["short_name"] as! String) + ", " + (addrinfo[5]["long_name"] as! String)
+                    //print("RESULTS: ",self.suburb)
+                    GeoPhoto["suburb"] = self.suburb
+                    GeoPhoto["upVotes"] = 0
+                    GeoPhoto["upVoters"] = []
+                    GeoPhoto["comments"] = []
+                    GeoPhoto["caption"] = self.captionText.text ?? ""
+                    //print("CAPTION ",self.captionText.text!)
+                    GeoPhoto.saveInBackground()
+                    print("Should be sent to Parse")
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
+            }).resume()
         } else {
             print("Something, went wrong")
         }
