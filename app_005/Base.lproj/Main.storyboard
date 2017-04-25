@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tEl-oy-rFf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -492,7 +492,7 @@
         <!--Loading View Controller-->
         <scene sceneID="aFM-Pc-agZ">
             <objects>
-                <viewController id="4FR-At-zNp" userLabel="Loading View Controller" customClass="LoadingScreenViewController" customModule="app_005" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Loading" id="4FR-At-zNp" userLabel="Loading View Controller" customClass="LoadingScreenViewController" customModule="app_005" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MBz-yA-ulK"/>
                         <viewControllerLayoutGuide type="bottom" id="AI3-gm-8Ap"/>

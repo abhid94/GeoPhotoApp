@@ -47,11 +47,6 @@ class StartViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if (PFUser.current() != nil){
-            self.goToTabs()
-        }
-    }
 
     override func viewDidLoad() {
         
@@ -75,7 +70,7 @@ class StartViewController: UIViewController {
         }
         paging.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
         self.mainScrollView.isPagingEnabled = true
-        
+        print("START VC LOADED")
         
     }
     

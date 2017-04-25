@@ -24,6 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         Parse.initialize(with: configuration)
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController : UIViewController
+        if (PFUser.current() != nil){
+            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "Loading") as! LoadingScreenViewController
+        } else {
+            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "One") as! StartViewController
+        }
+        
+        
+        self.window?.rootViewController = initialViewController
+        
+        self.window?.makeKeyAndVisible()
+        
+        
+        
         return true
     }
     
