@@ -123,31 +123,34 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BaseTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        //cell.titleLabel.text = object?.object(forKey: "objectId") as? String
         
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
-        let upvoteCount = object?.object(forKey: "upVotes")
-        
         cell.cellImageView.image = UIImage(named: "placeholder")
         
-        /*
-        UIView.transition(with: cell.cellImageView,
-                          duration: 0.25,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                          //cell.cellImageView.image = UIImage(named: "placeholder")
-        },
-                          completion: nil)
+        let upvoteCount = object?.object(forKey: "upVotes")
         
-        UIView.transition(with: cell.cellImageView,
-                          duration: 1.0,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                          cell.cellImageView.file = imageFile
-        },
-                          completion: nil)
- 
-        */
+        let createdAtTime = object?.createdAt
+        let elapsed = Date().timeIntervalSince(createdAtTime!)
+        let (d,h,m,s) = self.secondsToHoursMinutesSeconds(seconds: Int(elapsed))
+        
+        if((d != 0)){
+            cell.dateLabel.text = (String(d) + " days ago")
+            //print("POSTED: ",d , " days ago")
+        } else if ((d == 0) && (h != 0)){
+            //print("POSTED: ",h , " hours ago")
+            cell.dateLabel.text = (String(h) + " hours ago")
+        } else if (m != 0){
+            //print("POSTED: ",m , " minutes ago")
+            cell.dateLabel.text = (String(m) + " mins ago")
+        } else {
+            cell.dateLabel.text = (String(s) + " secs ago")
+        }
+        
+        if((object?.object(forKey: "suburb")) != nil){
+            cell.suburbLabel.text = object?.object(forKey: "suburb") as? String
+        } else {
+            cell.suburbLabel.text = ""
+        }
         
         cell.cellImageView.file = imageFile
         
@@ -162,6 +165,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         
         return cell
         
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
+        return (seconds / 86400, seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     
