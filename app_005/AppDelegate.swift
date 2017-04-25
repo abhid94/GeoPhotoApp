@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let configuration = ParseClientConfiguration {
@@ -24,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UIApplication.shared.statusBarStyle = .lightContent
         Parse.initialize(with: configuration)
+        
         return true
     }
     

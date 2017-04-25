@@ -128,8 +128,9 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let imageFile = object?.object(forKey: "imageFile") as? PFFile
         let upvoteCount = object?.object(forKey: "upVotes")
         
-        //cell.cellImageView.image = UIImage(named: "placeholder")
+        cell.cellImageView.image = UIImage(named: "placeholder")
         
+        /*
         UIView.transition(with: cell.cellImageView,
                           duration: 0.25,
                           options: .transitionCrossDissolve,
@@ -145,6 +146,11 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
                           cell.cellImageView.file = imageFile
         },
                           completion: nil)
+ 
+        */
+        
+        cell.cellImageView.file = imageFile
+        
         cell.upvoteCounter.setTitle("\(upvoteCount!)",for: .normal)
         cell.cellImageView.loadInBackground()
         var newString = object?.object(forKey: "caption") as? String
