@@ -54,7 +54,7 @@ class StartViewController: UIViewController {
         
         mainScrollView.frame = view.frame
         mainScrollView.showsHorizontalScrollIndicator = false
-        imageArray = [#imageLiteral(resourceName: "Splash Screen"),#imageLiteral(resourceName: "Onboarding screen 1")]
+        imageArray = [#imageLiteral(resourceName: "Splash Screen"),#imageLiteral(resourceName: "Onboarding screen 1"),#imageLiteral(resourceName: "Onboarding screen 2"),#imageLiteral(resourceName: "Onboarding screen 3")]
         configurePageControl()
         
         for i in 0..<imageArray.count{
