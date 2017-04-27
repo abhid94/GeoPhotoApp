@@ -47,7 +47,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         if self.objects!.count == 0 {
             query.cachePolicy = .cacheThenNetwork
         }
-        
         locationManager.stopUpdatingLocation()
         return query
     }
@@ -67,10 +66,19 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             }
         }
         self.loadObjects()
+        self.tableView.setContentOffset(CGPoint.zero, animated: true)
+    }
+    
+    func refreshList(_ notification: Notification){
+        self.sortMetric = "createdAt"
+        self.loadObjects()
+        self.tableView.setContentOffset(CGPoint.zero, animated: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshList(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     @IBAction func addUpvote(_ sender: AnyObject) {
@@ -132,18 +140,32 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let createdAtTime = object?.createdAt
         let elapsed = Date().timeIntervalSince(createdAtTime!)
         let (d,h,m,s) = self.secondsToHoursMinutesSeconds(seconds: Int(elapsed))
+        //print(d,"-",h,"-",m,"-",s)
         
-        if((d != 0)){
-            cell.dateLabel.text = (String(d) + " days ago")
-            //print("POSTED: ",d , " days ago")
-        } else if ((d == 0) && (h != 0)){
-            //print("POSTED: ",h , " hours ago")
-            cell.dateLabel.text = (String(h) + " hours ago")
+        if(d != 0){
+            if(d != 1){
+                cell.dateLabel.text = (String(d) + " days ago")
+            } else {
+                cell.dateLabel.text = ("1 day ago")
+            }
+        } else if (h != 0){
+            if(h != 1){
+                cell.dateLabel.text = (String(h) + " hours ago")
+            } else {
+                cell.dateLabel.text = ("1 hour ago")
+            }
         } else if (m != 0){
-            //print("POSTED: ",m , " minutes ago")
-            cell.dateLabel.text = (String(m) + " mins ago")
+            if(m != 1){
+                cell.dateLabel.text = (String(m) + " mins ago")
+            } else {
+                cell.dateLabel.text = ("1 min ago")
+            }
         } else {
-            cell.dateLabel.text = (String(s) + " secs ago")
+            if(s != 1){
+                cell.dateLabel.text = (String(s) + " secs ago")
+            } else {
+                cell.dateLabel.text = ("1 sec ago")
+            }
         }
         
         if((object?.object(forKey: "suburb")) != nil){
@@ -178,11 +200,18 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         self.objectToLook = self.object(at: hitIndex)!
         
-        DispatchQueue.main.async(){
-            print("going through segue")
-            self.performSegue(withIdentifier: "showDetail", sender: self)
-            
-        }
+        self.objectToLook.fetchInBackground(block: { (success, error) -> Void in
+            if error == nil {
+                print("Success")
+                DispatchQueue.main.async(){
+                    print("going through segue")
+                    self.performSegue(withIdentifier: "showDetail", sender: self)
+                    
+                }
+            } else {
+                print("Fail")
+            }
+        })
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -195,6 +224,15 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             
         }
         
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.objects!.count == 0 {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "noPost"), object: nil)
+        } else {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "isPost"), object: nil)
+        }
+        return 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
