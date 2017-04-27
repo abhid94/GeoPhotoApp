@@ -18,6 +18,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var distanceButton: UIButton!
     @IBOutlet weak var sortButton: UIButton!
+    @IBOutlet weak var noPostImage: UIImageView!
     
     fileprivate var text1 = [2, 10, 100]
     fileprivate var text2 = ["New", "Popular"]
@@ -30,7 +31,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     ]
 
 
-    var myDict = ["radius": 2, "sort": "new"] as [String : Any]
+    var myDict = ["radius": 2, "sort": "New"] as [String : Any]
     
     var locationManager = CLLocationManager()
     var coordinatesInfo = CLLocationCoordinate2D()
@@ -39,6 +40,8 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     @IBAction func unwindToFeed(segue: UIStoryboardSegue){
         
     }
+    
+    
 
     
     @IBAction func openCamera(_ sender: Any) {
@@ -122,6 +125,19 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
         self.popover = Popover(options: self.popoverOptions)
         self.popover.show(tableView, fromView: self.sortButton)
         self.popover.popoverColor = UIColor.darkGray
+    }
+    
+    func showNoPostImage(_ notification: Notification){
+        self.noPostImage.alpha = 1.0
+    }
+    
+    func showIsPostImage(_ notification: Notification){
+        self.noPostImage.alpha = 0.0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoPostImage(_:)), name: NSNotification.Name(rawValue: "noPost"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showIsPostImage(_:)), name: NSNotification.Name(rawValue: "isPost"), object: nil)
     }
     
 

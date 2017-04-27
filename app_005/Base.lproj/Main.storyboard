@@ -364,12 +364,17 @@
                                     <action selector="tappedSortButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Hy0-48-5NG"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NOTHING HERE YET 2" translatesAutoresizingMaskIntoConstraints="NO" id="v6N-w7-tp3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="distanceButton" destination="ZDJ-XG-ivJ" id="GcV-L9-qRh"/>
+                        <outlet property="noPostImage" destination="v6N-w7-tp3" id="1zc-2V-LNF"/>
                         <outlet property="sortButton" destination="YeD-cb-t0g" id="cwY-rx-4bf"/>
                         <segue destination="4gF-B7-isP" kind="presentation" identifier="segueToCaption" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="zIo-Fw-tpf"/>
                     </connections>
@@ -572,6 +577,7 @@
         <image name="Fire" width="18" height="28"/>
         <image name="Group 2" width="320" height="53"/>
         <image name="Line" width="252" height="1"/>
+        <image name="NOTHING HERE YET 2" width="375" height="600"/>
         <image name="Onboarding screen 1" width="375" height="667"/>
         <image name="Oval" width="49" height="49"/>
         <image name="Rectangle 2" width="375" height="53"/>

@@ -44,7 +44,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
         self.tableView.beginUpdates()
         let numComments = self.commentsArray.count
         let newItemIndexPath = IndexPath(row: numComments-1, section: 0)
-        self.tableView.insertRows(at: [newItemIndexPath], with: UITableViewRowAnimation.automatic)
+        self.tableView.insertRows(at: [newItemIndexPath], with: UITableViewRowAnimation.bottom)
         self.tableView.endUpdates()
         self.tableView.scrollToRow(at: newItemIndexPath, at: .bottom, animated: true)
     }
@@ -158,9 +158,9 @@ class CommentsViewController: UIViewController, UITextFieldDelegate, UITableView
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
 
-    }
+    //}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 

@@ -94,7 +94,7 @@ class CaptionViewController: UIViewController {
                     let results = json["results"] as? [[String: Any]] ?? []
                     let addrinfo = results[0]["address_components"] as? [[String: Any]] ?? []
                     //print(addrinfo)
-                    self.suburb = (addrinfo[2]["short_name"] as! String) + ", " + (addrinfo[5]["long_name"] as! String)
+                    self.suburb = (addrinfo[2]["short_name"] as! String) + ", Australia"// + (addrinfo[5]["long_name"] as! String)
                     //print("RESULTS: ",self.suburb)
                     GeoPhoto["suburb"] = self.suburb
                     GeoPhoto["upVotes"] = 0
@@ -102,7 +102,14 @@ class CaptionViewController: UIViewController {
                     GeoPhoto["comments"] = []
                     GeoPhoto["caption"] = self.captionText.text ?? ""
                     //print("CAPTION ",self.captionText.text!)
-                    GeoPhoto.saveInBackground()
+                    GeoPhoto.saveInBackground(block: { (success, error) -> Void in
+                        if error == nil {
+                            print("Success")
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: "reload"), object: nil)
+                        } else {
+                            print("Fail")
+                        }
+                    })
                     print("Should be sent to Parse")
                     
                 } catch let error as NSError {
