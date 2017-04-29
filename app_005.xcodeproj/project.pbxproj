@@ -645,6 +645,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FDU885356T;
 				INFOPLIST_FILE = app_005/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "outplay.app-005";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,6 +663,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = FDU885356T;
 				INFOPLIST_FILE = app_005/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "outplay.app-005";
 				PRODUCT_NAME = "$(TARGET_NAME)";

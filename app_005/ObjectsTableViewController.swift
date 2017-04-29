@@ -13,6 +13,7 @@ import ParseUI
 
 class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
     
+    @IBOutlet var feedBackground: UIView!
     var locationManager = CLLocationManager()
     var sortMethod = -1
     var radius = 2.0
@@ -21,7 +22,8 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: self.parseClassName!)
-        
+        self.tableView.backgroundColor = UIColor.clear
+        self.tableView.backgroundView = self.feedBackground
         // If no objects are loaded in memory, we look to the cache first to fill the table
         // and then subsequently do a query against the network.
         locationManager.startUpdatingLocation()
