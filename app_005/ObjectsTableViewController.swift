@@ -196,6 +196,15 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     
+    @IBAction func reportButton(_ sender: Any) {
+        
+        print("Report button clicked")
+    }
+    
+    
+    
+    
+    
     @IBAction func goToComments(_ sender: Any) {
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
