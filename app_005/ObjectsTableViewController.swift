@@ -197,8 +197,17 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     
     @IBAction func reportButton(_ sender: Any) {
-        
+    
         print("Report button clicked")
+        
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
+        let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
+        self.objectToLook = self.object(at: hitIndex)!
+        
+        let obID = objectToLook.objectId
+        
+        print(obID!)
     }
     
     
