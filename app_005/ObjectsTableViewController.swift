@@ -206,11 +206,14 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         self.objectToLook = self.object(at: hitIndex)!
         
         let obID = objectToLook.objectId
-        
         print(obID!)
+        
+        let alert = UIAlertController(title: "Thankyou!", message: "Image will be reviewed as soon as possible.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        
     }
-    
-    
     
     
     
