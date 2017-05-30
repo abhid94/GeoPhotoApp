@@ -196,6 +196,27 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     
+    @IBAction func reportButton(_ sender: Any) {
+    
+        print("Report button clicked")
+        
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
+        let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
+        let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
+        self.objectToLook = self.object(at: hitIndex)!
+        
+        let obID = objectToLook.objectId
+        print(obID!)
+        
+        let alert = UIAlertController(title: "Thank you!", message: "Image will be reviewed as soon as possible.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        
+    }
+    
+    
+    
     @IBAction func goToComments(_ sender: Any) {
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
