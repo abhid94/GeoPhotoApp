@@ -52,6 +52,7 @@ class StartViewController: UIViewController {
         
         super.viewDidLoad()
         
+        
         mainScrollView.frame = view.frame
         mainScrollView.showsHorizontalScrollIndicator = false
         imageArray = [#imageLiteral(resourceName: "Splash Screen"),#imageLiteral(resourceName: "Onboarding screen 1"),#imageLiteral(resourceName: "Onboarding screen 2"),#imageLiteral(resourceName: "Onboarding screen 3")]
@@ -72,6 +73,10 @@ class StartViewController: UIViewController {
         self.mainScrollView.isPagingEnabled = true
         print("START VC LOADED")
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.showTerms()
     }
     
     func changePage(sender: AnyObject) -> () {
@@ -112,5 +117,17 @@ class StartViewController: UIViewController {
         }
         return randomString
     }
+    
+    func showTerms(){
+        
+        let alert = UIAlertController(
+            title: "Terms and Conditions",
+            message: "By using this app you are agreeing to the EULA which can be found here: https://docs.google.com/document/d/1-jCg96IFu78MFBp8y6W1JelbPpN49-G3oOeN-bFXUa4/edit",
+            preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Agree", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
 
 }
