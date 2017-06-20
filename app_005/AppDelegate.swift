@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController : UIViewController
         if (PFUser.current() != nil){
-            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "Loading") as! LoadingScreenViewController
+           initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "Loading") as! LoadingScreenViewController
         } else {
             initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "One") as! StartViewController
         }

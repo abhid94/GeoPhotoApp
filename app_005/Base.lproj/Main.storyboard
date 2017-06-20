@@ -445,6 +445,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="Xr9-FZ-8gK" kind="presentation" identifier="segueToEULA" id="xDb-6a-Kez"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -453,12 +456,42 @@
                         <outlet property="goToTabsButton" destination="dxF-MU-ChM" id="LG7-MD-aZT"/>
                         <outlet property="mainScrollView" destination="V7w-Vy-U28" id="qEa-cc-1Wk"/>
                         <outlet property="paging" destination="cMi-cq-MqO" id="kmW-le-sLr"/>
-                        <segue destination="4FR-At-zNp" kind="presentation" identifier="segueToLoadingScreen" modalTransitionStyle="crossDissolve" id="tX9-PT-T4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQb-03-AuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-525.60000000000002" y="-868.51574212893559"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ORs-qg-cTt">
+            <objects>
+                <viewController id="Xr9-FZ-8gK" customClass="EULAViewController" customModule="app_005" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qny-sb-Jcp"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Is-7H-9eR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fqB-bO-Meo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Y-uS-MS9">
+                                <rect key="frame" x="189" y="566" width="170" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ACCEPT"/>
+                                <connections>
+                                    <action selector="acceptButton:" destination="Xr9-FZ-8gK" eventType="touchUpInside" id="10b-Sh-xQ1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="4FR-At-zNp" kind="presentation" identifier="segueToLoadingScreen" id="m1c-5Z-JSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUn-PO-5qI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469.60000000000002" y="-869.41529235382313"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="aFM-Pc-agZ">

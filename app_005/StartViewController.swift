@@ -20,21 +20,7 @@ class StartViewController: UIViewController {
     var numberOfUsers = -1 as Int;
     
     @IBAction func goToTabsPressed(_ sender: Any) {
-        let username = self.randomString(length: 10)
-        let password = "pwd"
-        let finalEmail = username+"@fake.com"
-        let newUser = PFUser()
-        
-        newUser.username = username
-        newUser.password = password
-        newUser.email = finalEmail
-        
-        newUser.signUpInBackground(block: { (succeed, error) -> Void in
-            if ((error) != nil) {
-            } else {
-                print("sign up successful")
-            }
-        })
+    
         
         //default.setValue("LoadingViewController", forKey: "LaunchView")
         
@@ -42,9 +28,19 @@ class StartViewController: UIViewController {
     }
     
     func goToTabs(){
+        
+        goToEULA()
+        
+       // DispatchQueue.main.async(){
+       //     self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
+        //}
+    }
+    
+    func goToEULA() {
         DispatchQueue.main.async(){
-            self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
+            self.performSegue(withIdentifier: "segueToEULA", sender: self)
         }
+
     }
     
 
@@ -75,9 +71,6 @@ class StartViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.showTerms()
-    }
     
     func changePage(sender: AnyObject) -> () {
         self.paging.updateCurrentPageDisplay()
@@ -106,28 +99,8 @@ class StartViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func randomString(length: Int) -> String {
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
-        var randomString = ""
-        for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
-        return randomString
-    }
+
     
-    func showTerms(){
-        
-        let alert = UIAlertController(
-            title: "Terms and Conditions",
-            message: "By using this app you are agreeing to the EULA which can be found here: https://docs.google.com/document/d/1-jCg96IFu78MFBp8y6W1JelbPpN49-G3oOeN-bFXUa4/edit",
-            preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "Agree", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
 
 
 }
