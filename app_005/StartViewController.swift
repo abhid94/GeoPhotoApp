@@ -28,19 +28,9 @@ class StartViewController: UIViewController {
     }
     
     func goToTabs(){
-        
-        goToEULA()
-        
-       // DispatchQueue.main.async(){
-       //     self.performSegue(withIdentifier: "segueToLoadingScreen", sender: self)
-        //}
-    }
-    
-    func goToEULA() {
         DispatchQueue.main.async(){
             self.performSegue(withIdentifier: "segueToEULA", sender: self)
         }
-
     }
     
 
