@@ -475,13 +475,78 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Y-uS-MS9">
-                                <rect key="frame" x="189" y="566" width="170" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ACCEPT"/>
+                                <rect key="frame" x="260" y="597" width="74" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <state key="normal" title="Accept">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="acceptButton:" destination="Xr9-FZ-8gK" eventType="touchUpInside" id="10b-Sh-xQ1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Giw-SX-Fd4">
+                                <rect key="frame" x="48" y="597" width="74" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <state key="normal" title="Decline">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uT-9P-zG4">
+                                <rect key="frame" x="16" y="20" width="343" height="559"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">HighLight EULA 
+
+End-User License Agreement ("Agreement")
+ 
+Last updated: (03/06/2017)
+ 
+Please read this End-User License Agreement ("Agreement") carefully before clicking the "I Agree" button, downloading or using HighLight ("Application").
+ 
+By clicking the "I Agree" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.
+ 
+If you do not agree to the terms of this Agreement, do not click on the "I Agree" button and do not download or use the Application.
+ 
+License
+ 
+HighLight grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.
+ 
+Restrictions
+ 
+You agree not to, and you will not permit others to:
+ 
+a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.
+ 
+ 
+Modifications to Application
+ 
+HighLight reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.
+ 
+ 
+Term and Termination
+ 
+This Agreement shall remain in effect until terminated by you or HighLight. 
+ 
+HighLight may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice.
+ 
+This Agreement will terminate immediately, without prior notice from HighLight, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.
+ 
+Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.
+ 
+Severability
+ 
+If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.
+ 
+Amendments to this Agreement
+ 
+HighLight reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+ 
+Contact Information
+ 
+If you have any questions about this Agreement, please contact us.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
