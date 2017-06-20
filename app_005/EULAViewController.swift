@@ -37,6 +37,11 @@ class EULAViewController: UIViewController {
         
     }
     
+    
+    @IBAction func declineButton(_ sender: Any) {
+        exit(0)
+    }
+    
     func randomString(length: Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
