@@ -21,12 +21,12 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     var objectToLook = PFObject(className: "GeoPhoto")
     var imagesToRemove = [Int]()
     
-    var indexPath: IndexPath?
-    
     override func queryForTable() -> PFQuery<PFObject> {
+        
         let query = PFQuery(className: self.parseClassName!)
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.backgroundView = self.feedBackground
+        
         // If no objects are loaded in memory, we look to the cache first to fill the table
         // and then subsequently do a query against the network.
         locationManager.startUpdatingLocation()
@@ -57,6 +57,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     func loadList(_ notification: Notification){
+        
         if let myDict = notification.object as? [String: Any] {
             if let myInt = myDict["radius"] as? Int {
                 self.radius = Double(myInt)
@@ -75,6 +76,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     func refreshList(_ notification: Notification){
+        
         self.sortMetric = "createdAt"
         self.loadObjects()
         self.tableView.setContentOffset(CGPoint.zero, animated: true)
@@ -82,6 +84,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshList(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
@@ -92,13 +95,10 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         let geoPhoto = object(at: hitIndex)
-        
         let usersHaveUpvotedArray = geoPhoto?["upVoters"] as? NSArray
         let userObjectId = PFUser.current()?.objectId as String! ?? "9999999999"
         let contained = usersHaveUpvotedArray?.contains(userObjectId)
         
-        if (contained == true) {
-        }
         if (contained == false) {
             geoPhoto?.addUniqueObject(userObjectId, forKey: "upVoters")
             geoPhoto?.incrementKey("upVotes")
@@ -108,6 +108,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     @IBAction func addDownvote(_ sender: Any) {
+        
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
@@ -116,9 +117,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let usersHaveUpvotedArray = geoPhoto?["upVoters"] as? NSArray
         let userObjectId = PFUser.current()?.objectId as String! ?? "9999999999"
         let contained = usersHaveUpvotedArray?.contains(userObjectId)
-        if (contained == true) {
-        }
-        
+
         if (contained == false) {
             geoPhoto?.addUniqueObject(userObjectId, forKey: "upVoters")
             geoPhoto?.incrementKey("upVotes", byAmount: -1)
@@ -133,7 +132,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
     
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BaseTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
@@ -145,7 +143,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let createdAtTime = object?.createdAt
         let elapsed = Date().timeIntervalSince(createdAtTime!)
         let (d,h,m,s) = self.secondsToHoursMinutesSeconds(seconds: Int(elapsed))
-        //print(d,"-",h,"-",m,"-",s)
         
         if(d != 0){
             if(d != 1){
@@ -188,7 +185,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             newString = newString!.uppercased()
         }
         cell.captionLabel.text = newString
-        //cell.captionLabel.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height*0.6)
         
         return cell
         
@@ -206,11 +202,11 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
         
         self.imagesToRemove.append((hitIndex?.row)!)
-        
         self.objectToLook = self.object(at: hitIndex)!
         let alert = UIAlertController(title: "Thank you!", message: "Image will be reviewed as soon as possible.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        self.tableView.reloadData()
     }
     
     /*
@@ -231,21 +227,8 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         }
     }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let myCell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath)
-//        
-//        print(indexPath);
-//        
-//        if(indexPath.row < 2){
-//            myCell.isHidden = true
-//        }else{
-//            myCell.isHidden = false
-//        }
-//        
-//        return myCell
-//    }
-    
     @IBAction func goToComments(_ sender: Any) {
+        
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
@@ -257,7 +240,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
                 DispatchQueue.main.async(){
                     print("going through segue")
                     self.performSegue(withIdentifier: "showDetail", sender: self)
-                    
                 }
             } else {
                 print("Fail")
@@ -278,6 +260,7 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         if self.objects!.count == 0 {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "noPost"), object: nil)
         } else {
@@ -288,26 +271,19 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
         if segue.identifier == "showDetail" {
-            //let indexPath = self.tableView.indexPathForSelectedRow
             let detailVC = segue.destination as! CommentsViewController
-            
-            
-            let object = self.objectToLook//self.object(at: indexPath)
+            let object = self.objectToLook
             
             detailVC.titleString = object.objectId
             detailVC.imageFile = object.object(forKey: "imageFile") as? PFFile
             detailVC.commentsArray = (object.object(forKey: "comments") as? [String])!
-            
-            //self.tableView.deselectRow(at: indexPath!, animated: true)
         }
-        
-        
     }
     
     //Infinite scrolling
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         if (scrollView.contentSize.height - scrollView.contentOffset.y < (self.view.bounds.size.height)) {
             if !self.isLoading {
                 self.loadNextPage()
@@ -315,7 +291,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         }
     }
     
-   
     override func viewDidLoad() {
         
         sleep(1)
@@ -325,9 +300,6 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
         self.objectsPerPage = 30
         
         locationManager.delegate = self
-        /*if CLLocationManager.authorizationStatus() == .notDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        }*/
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Do any additional setup after loading the view, typically from a nib.
