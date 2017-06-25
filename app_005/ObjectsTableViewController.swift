@@ -19,6 +19,9 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     var radius = 2.0
     var sortMetric = "createdAt"
     var objectToLook = PFObject(className: "GeoPhoto")
+    var imagesToRemove = [Int]()
+    
+    var indexPath: IndexPath?
     
     override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: self.parseClassName!)
@@ -197,25 +200,50 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
     
     
     @IBAction func reportButton(_ sender: Any) {
-    
-        print("Report button clicked")
         
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
         let inversePoint = CGPoint.init(x: abs(hitPoint.x), y: abs(hitPoint.y))
         let hitIndex = self.tableView.indexPathForRow(at: inversePoint)
+        
+        self.imagesToRemove.append((hitIndex?.row)!)
+        
         self.objectToLook = self.object(at: hitIndex)!
-        
-        let obID = objectToLook.objectId
-        print(obID!)
-        
         let alert = UIAlertController(title: "Thank you!", message: "Image will be reviewed as soon as possible.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
-        
     }
     
+    /*
+     Function modifies the height of the cell
+     If the report button is clicked than it will also remove the image from the feed for that user
+     */
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let height = tableView.frame.size.height
+        let percentage = 0.95
+        
+        let elementId = indexPath.row;
+        
+        if(self.imagesToRemove.contains(elementId)){
+            return 0.0
+        }else{
+            return CGFloat(height) * CGFloat(percentage);
+        }
+    }
     
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let myCell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath)
+//        
+//        print(indexPath);
+//        
+//        if(indexPath.row < 2){
+//            myCell.isHidden = true
+//        }else{
+//            myCell.isHidden = false
+//        }
+//        
+//        return myCell
+//    }
     
     @IBAction func goToComments(_ sender: Any) {
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, from: self.tableView)
@@ -269,27 +297,12 @@ class ObjectsTableViewController: PFQueryTableViewController, CLLocationManagerD
             let object = self.objectToLook//self.object(at: indexPath)
             
             detailVC.titleString = object.objectId
-            print("one")
-            print(object.objectId!)
-            print("two")
             detailVC.imageFile = object.object(forKey: "imageFile") as? PFFile
             detailVC.commentsArray = (object.object(forKey: "comments") as? [String])!
             
             //self.tableView.deselectRow(at: indexPath!, animated: true)
         }
         
-        
-    }
-    
-    /*
-     Function modifies the height of the cell
-     */
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let height = tableView.frame.size.height
-        let percentage = 0.95
-        
-        return CGFloat(height) * CGFloat(percentage);
         
     }
     
