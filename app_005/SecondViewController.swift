@@ -20,7 +20,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var noPostImage: UIImageView!
     
-    fileprivate var text1 = [2, 10, 100]
+    fileprivate var text1 = [1, 2, 10, 100, 500]
     fileprivate var text2 = ["New", "Popular"]
     
     
@@ -100,7 +100,7 @@ UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     @IBAction func tappedDistanceButton(_ sender: UIButton) {
         whichPopover = 0
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 100, height: 135))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 100, height: 225))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
@@ -165,7 +165,7 @@ extension SecondViewController: UITableViewDataSource {
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(whichPopover == 0) {
-            return 3
+            return 5
         } else {
             return 2
         }
